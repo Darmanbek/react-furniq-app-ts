@@ -1,0 +1,33 @@
+.header__bottom-left
+{
+    display: none;
+
+    @media (min-width: 768px) {
+        display: flex;
+    }
+
+    align-items: center;
+    gap: 1.25rem/* 20px */;
+
+    &__catalog
+    {
+        position: relative;
+
+        button
+        {
+            cursor: pointer;
+            border: 2px solid;
+            border-color: var(--clr-light-blue);
+            padding: 8px 24px;
+            border-radius:  9999px;
+            letter-spacing: 0.05em;
+            
+            transition: border-color 150ms;
+
+            &:hover
+            {
+                border-color: var(--clr-light-blue-2);
+            }
+        }
+    }
+}

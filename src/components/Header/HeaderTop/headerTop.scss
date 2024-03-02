@@ -1,0 +1,47 @@
+.header__top
+{
+    padding: 4px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &-location
+    {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem/* 4px */;
+        font-size: 0.75rem/* 12px */;
+        line-height: 1rem/* 16px */;
+
+        @media (min-width: 640px) {
+            font-size: 1rem/* 16px */;
+            line-height: 1.5rem/* 24px */;
+        }
+    }
+
+    &-nav ul
+    {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem/* 8px */;
+
+        @media (min-width: 640px) {
+            gap: 1.25rem/* 20px */;
+        }
+
+        li
+        {
+            a, button
+            {
+
+                font-size: 0.75rem/* 12px */;
+                line-height: 1rem/* 16px */;
+                
+                @media (min-width: 640px) {
+                    font-size: 1rem/* 16px */;
+                    line-height: 1.5rem/* 24px */;
+                }
+            }
+        }
+    }
+}
