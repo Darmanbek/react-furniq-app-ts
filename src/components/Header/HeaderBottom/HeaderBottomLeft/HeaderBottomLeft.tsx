@@ -9,7 +9,7 @@ const HeaderBottomLeft: React.FC = () => {
             <Link to="/">
                 <img src={Logo} alt="Logo" />
             </Link>
-            <div className="header__bottom-left__catalog">
+            <div className="bottom-left__catalog">
                 <button>Katalog</button>
             </div>
         </div>

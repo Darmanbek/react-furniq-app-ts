@@ -1,0 +1,15 @@
+.product-shopping
+{
+    z-index: 50;
+
+    .icon-shopping
+    {
+        font-size: 28px;
+        transition: transform 150ms;
+
+        &:active
+        {
+            transform: scale(0.9);
+        }
+    }
+}

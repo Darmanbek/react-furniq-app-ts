@@ -15,9 +15,6 @@ const SectionBanner: React.FC = () => {
                     <Swiper
                         centeredSlides
                         loop
-                        pagination={{
-                            dynamicBullets: true,
-                        }}
                         autoplay={{
                             disableOnInteraction: false,
                             delay: 3000,

@@ -1,0 +1,19 @@
+.button-submit
+{
+    // bg-orange-500 text-white flex items-center py-1 px-10 rounded-md tracking-widest uppercase font-semibold transition hover:bg-orange-600
+    background-color: var(--clr-orange);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 40px;
+    border-radius: 10px;
+    text-transform: uppercase;
+
+    span
+    {
+        padding: 8px 0;
+        font-size: 16px;
+        line-height: 24px;
+        color: var(--clr-white);
+    }
+}

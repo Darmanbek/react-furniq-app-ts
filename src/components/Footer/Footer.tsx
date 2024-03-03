@@ -62,34 +62,34 @@ const Footer: React.FC = () => {
                         </a>
                         <div className="footer__item">
                             <h2>Furniq v socsetyah</h2>
-                            <div className="footer__item-links">
+                            <div className="footer-links">
                                 <a
                                     href="https://www.instagram.com"
                                     target="_blank"
                                     rel="noreferrer"
                                 >
-                                    <FaInstagram className="footer__item-links__icon" />
+                                    <FaInstagram className="footer-links__icon" />
                                 </a>
                                 <a
                                     href="https://www.telegram.org"
                                     target="_blank"
                                     rel="noreferrer"
                                 >
-                                    <FaTelegram className="footer__item-links__icon" />
+                                    <FaTelegram className="footer-links__icon" />
                                 </a>
                                 <a
                                     href="https://www.youtube.com"
                                     target="_blank"
                                     rel="noreferrer"
                                 >
-                                    <FaYoutube className="footer__item-links__icon" />
+                                    <FaYoutube className="footer-links__icon" />
                                 </a>
                                 <a
                                     href="https://www.facebook.com"
                                     target="_blank"
                                     rel="noreferrer"
                                 >
-                                    <FaFacebookSquare className="footer__item-links__icon" />
+                                    <FaFacebookSquare className="footer-links__icon" />
                                 </a>
                             </div>
                         </div>

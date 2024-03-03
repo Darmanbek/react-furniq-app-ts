@@ -1,0 +1,20 @@
+.product-like
+{
+
+    .icon-like
+    {
+        // text-xl text-orange-500 transition-transform active:scale-75
+        font-size: 20px;
+        transition: transform 150ms, color 150ms;
+
+        &:active
+        {
+            transform: scale(0.75);
+        }
+
+        &.fill
+        {
+            color: var(--clr-orange);
+        }
+    }
+}

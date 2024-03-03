@@ -1,9 +1,11 @@
 import React from "react";
+import { Routes, Route } from "react-router-dom";
+import { Header, Footer } from "@/components";
 import { 
-    Header,
-    SectionBanner,
-    Footer,
-} from "@/components";
+    HomePage, 
+    SignInPage, 
+    SignOnPage 
+} from "@/pages";
 import "@/styles/app.css";
 
 const App: React.FC = () => {
@@ -11,7 +13,11 @@ const App: React.FC = () => {
         <div className="app">
             <Header />
             <main>
-                <SectionBanner />
+                <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/login" element={<SignInPage />} />
+                    <Route path="/register" element={<SignOnPage />} />
+                </Routes>
             </main>
             <Footer />
         </div>

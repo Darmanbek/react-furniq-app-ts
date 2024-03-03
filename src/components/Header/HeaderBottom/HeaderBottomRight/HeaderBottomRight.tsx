@@ -8,14 +8,15 @@ import "./headerBottomRight.scss";
 const HeaderBottomRight: React.FC = () => {
     return (
         <div className="header__bottom-right">
-            <Link to="/wishes">
-                <FaRegHeart className="header__bottom-right__icon" />
+            <Link to="/wishes" className="bottom-right__link">
+                <FaRegHeart className="bottom-right__icon" />
             </Link>
-            <Link to="/cart">
-                <RiShoppingBag3Line className="header__bottom-right__icon" />
+            <Link to="/cart" className="bottom-right__link">
+                <RiShoppingBag3Line className="bottom-right__icon" />
             </Link>
-            <Link to="/register">
-                <FaRegUser className="header__bottom-right__icon" />
+            <Link to="/register" className="bottom-right__link">
+                <FaRegUser className="bottom-right__icon" />
+                <span></span>
             </Link>
         </div>
     );

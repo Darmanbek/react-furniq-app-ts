@@ -1,7 +1,18 @@
 import React from "react";
+import { 
+    SectionBanner,
+    SectionProducts
+} from "@/components";
 
 const HomePage: React.FC = () => {
-    return <div className="home"></div>;
+    return (
+        <>
+            <SectionBanner />
+            <SectionProducts />
+            <SectionProducts />
+            <SectionProducts />
+        </>
+    );
 };
 
 export default HomePage;

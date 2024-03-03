@@ -1,0 +1,20 @@
+.section-sign
+{
+    // min-h-screen w-full flex items-center justify-center bg-slate-100 bg-[url('src/app/assets/bg/bg-main.jpg')] bg-no-repeat bg-cover bg-center
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('src/assets/bg/bg-main.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    .sign-inner
+    {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

@@ -6,17 +6,17 @@ import "./headerTop.scss";
 const HeaderTop: React.FC = () => {
     return (
         <div className="header__top">
-            <div className="header__top-location">
+            <div className="top-location">
                 <IoLocationOutline />
                 <a
                     href="https://maps.app.goo.gl/aBxevJbN8FiEhxmr9"
                     target="_blank"
                     rel="noreferrer"
                 >
-                    Nukus - Punkt vidachi
+                    <span className="location-city">Nukus</span> - Punkt vidachi
                 </a>
             </div>
-            <nav className="header__top-nav">
+            <nav className="top-nav">
                 <ul>
                     <li>
                         <a

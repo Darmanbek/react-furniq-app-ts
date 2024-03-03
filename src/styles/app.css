@@ -2,10 +2,21 @@
 {
     --clr-orange: #E57351;
     --clr-white: #FFFFFF;
+    --clr-black: #000000;
+
     --clr-gray-1: #F3F4F6;
     --clr-gray-2: #E5E7EB;
-    --clr-gray-3: #6B7280;
+
+    --clr-gray-2-5: #EDF1F4;
+    --clr-gray-2-6: #D1D5DB;
+
+    --clr-gray-3: #A0A9B0;
+    --clr-gray-4: #6B7280;
+
     --clr-light-blue: #B8CAD5;
     --clr-light-blue-2: #9CA3AF;
+
     --clr-dark-state-gray: #425463; 
+
+    --clr-blue: #2564eb;
 }

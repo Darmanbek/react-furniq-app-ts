@@ -5,9 +5,13 @@
     display: flex;
     border: 2px solid var(--clr-light-blue);
     border-radius: 9999px;
+    max-width: 700px;
 
-    @media (min-width: 768px) {
-        max-width: 650px;
+    transition: border-color 150ms;
+
+    &:focus-within
+    {
+        border-color: var(--clr-light-blue-2);
     }
 
     &__input
@@ -22,12 +26,39 @@
         align-items: center;
         overflow: hidden;
 
+
         input
         {
             border: none;
             width: 100%;
             padding: 8px 24px;
-            font-size: 14px;
+            font-size: 20px;
+            line-height: 28px;
+        }
+
+        button
+        {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 32px;
+
+            @media (min-width: 640px) {
+                max-width: 48px;
+            }
+
+            .delete-icon
+            {
+                cursor: pointer;
+                font-size: 18px;
+                line-height: 24px;
+
+                @media (min-width: 640px) {
+                    font-size: 20px;
+                    line-height: 28px;
+                }
+            }
         }
     }
 
@@ -38,7 +69,7 @@
         justify-content: center;
         align-items: center;
         background-color: var(--clr-gray-1);
-        padding: 8px 24px;  
+        padding: 8px 30px;  
         
         transition: background 150ms;
         
@@ -47,10 +78,11 @@
             background-color: var(--clr-gray-2);
         }
 
-        .icon
+        .search-icon
         {
-            font-size: 1.5rem/* 24px */;
-            line-height: 2rem/* 32px */;
+            font-size: 24px;
+            line-height: 32px;
+            color: var(--clr-dark-state-gray);
         }
     }
 }
