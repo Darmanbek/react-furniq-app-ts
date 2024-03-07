@@ -1,0 +1,14 @@
+.section-details
+{
+    padding: 20px 0;
+
+    .details-inner
+    {
+        
+        .details-head
+        {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+}

@@ -1,0 +1,132 @@
+.cart-card
+{
+    display: flex;
+    border: 1px solid var(--clr-gray-2-5);
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+    // max-width: 870px;
+    min-width: 870px;
+
+    &__img
+    {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        max-width: 264px;
+        width: 100%;
+        border-radius: 10px;
+        overflow: hidden;
+        background-color: var(--clr-gray-2-5);
+    }
+
+    &__info
+    {
+        width: 100%;
+        padding: 10px 15px 10px 25px;
+        display: flex;
+        justify-content: space-between;
+        color: var(--clr-dark-state-gray);
+
+        .info-desc
+        {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            max-width: 234px;
+        }
+
+        .info-top
+        {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            h1
+            {
+                font-size: 20px;
+                line-height: 28px;
+                font-weight: normal;
+                
+            }
+
+            .info-view
+            {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+
+                &__rating
+                {
+                    display: flex;
+                    align-items: center;
+                    gap: 2px;
+
+                    .icon_star
+                    {
+                        font-size: 15px;
+                        color: var(--clr-orange);
+                    }
+
+                    span
+                    {
+                        color: var(--clr-gray-3);
+                        font-size: 15px;
+                        line-height: 21px;
+                    }
+                }
+
+                &__review
+                {
+                    font-size: 15px;
+                    line-height: 21px;
+                    color: var(--clr-gray-3);
+                }
+            }
+        }
+
+        .info-bottom
+        {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+
+            span
+            {
+                color: var(--clr-gray-3);
+                font-size: 16px;
+                line-height: 21px;
+            }
+        }
+
+        .info-shop
+        {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: end;
+            padding-right: 8px;
+
+            &__price
+            {
+                display: flex;
+                flex-direction: column;
+                align-items: end;
+                font-size: 20px;
+                line-height: 28px;
+                gap: 5px;
+
+                span
+                {
+                    color: var(--clr-gray-3);
+                    text-decoration: line-through;
+                    font-size: 16px;
+                    line-height: 21px;
+                }
+            }
+        }
+
+
+    }
+}

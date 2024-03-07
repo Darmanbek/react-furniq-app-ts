@@ -1,0 +1,35 @@
+.catalog-block
+{
+    width: 100%;
+
+    .catalog-title
+    {
+        text-transform: capitalize;
+        font-size: 16px;
+        line-height: 21px;
+    }
+
+    .catalog-list
+    {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        padding-top: 20px;
+
+
+        .list-link
+        {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 7px;
+            border-radius: 5px;
+            text-transform: capitalize;
+
+            &:hover
+            {
+                background-color: var(--clr-gray-2-5);
+            }
+        }
+    }
+}

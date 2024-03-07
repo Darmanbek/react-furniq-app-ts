@@ -1,0 +1,43 @@
+.button-count
+{
+    background-color: var(--clr-gray-2-5);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+
+    button,
+    span
+    {
+        color: var(--clr-dark-state-gray);
+        padding: 5px;
+        font-size: 16px;
+        line-height: 21px;
+    }
+
+    button
+    {
+        font-size: 21px;
+    }
+
+    &.large
+    {
+        padding: 5px 10px;
+        gap: 60px;
+
+        button,
+        span
+        {
+            color: var(--clr-dark-state-gray);
+            padding: 5px;
+            font-size: 30px;
+            line-height: 42px;
+        }
+
+        button
+        {
+            font-size: 42px;
+        }
+    }
+}

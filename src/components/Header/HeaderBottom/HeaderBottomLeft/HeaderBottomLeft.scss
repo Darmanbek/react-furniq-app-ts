@@ -8,7 +8,7 @@
     {
         position: relative;
 
-        button
+        .catalog-button
         {
             cursor: pointer;
             border: 2px solid;
@@ -26,6 +26,20 @@
             {
                 border-color: var(--clr-light-blue-2);
             }
+        }
+
+        .catalog-nav
+        {
+            // absolute left-0 top-full border-2 p-5 rounded-lg z-50 bg-white w-80
+            position: absolute;
+            width: 200%;
+            z-index: 60;
+            padding: 20px;
+            left: 0;
+            top: 110%;
+            border: 2px solid var(--clr-light-blue);
+            border-radius: 10px;
+            background-color: var(--clr-white);
         }
     }
 }

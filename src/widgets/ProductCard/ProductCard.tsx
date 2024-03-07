@@ -1,7 +1,7 @@
 import React from "react";
 import { IoMdStar } from "react-icons/io";
 import { NoImage } from "@/assets";
-import ProductLike from "./ProductLike/ProductLike";
+import ProductLike from "../ProductLike/ProductLike";
 import "./productCard.scss";
 import ProductShopping from "./ProductShopping/ProductShopping";
 
@@ -26,7 +26,7 @@ const ProductCard: React.FC = () => {
                 <div className="card-view">
                     <div className="card-view__rating">
                         <IoMdStar className="icon_star" />
-                        <span className="text-sm text-gray-500">
+                        <span>
                             {/* {furniture.rating} */}
                             4.5
                         </span>
@@ -50,7 +50,7 @@ const ProductCard: React.FC = () => {
                 </div>
             </div>
             <a
-                href="/"
+                href="/details"
                 // href={`/details/${furniture.id}`}
             />
         </div>

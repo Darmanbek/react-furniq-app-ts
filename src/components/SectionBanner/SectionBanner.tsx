@@ -1,5 +1,5 @@
 import React from "react";
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { GooglePlay } from "@/assets";
 import "swiper/css";
@@ -20,7 +20,7 @@ const SectionBanner: React.FC = () => {
                             delay: 3000,
                         }}
                         navigation={true}
-                        modules={[Autoplay, Pagination, Navigation]}
+                        modules={[Autoplay, Navigation]}
                         className="banner"
                     >
                         {[...Array(10)].map((_, index) => (
@@ -28,7 +28,6 @@ const SectionBanner: React.FC = () => {
                                 <img
                                     src={GooglePlay}
                                     alt="logo"
-                                    className="w-full"
                                 />
                             </SwiperSlide>
                         ))}

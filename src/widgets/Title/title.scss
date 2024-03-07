@@ -1,0 +1,27 @@
+.head-title
+{
+    font-size: 30px;
+    line-height: 42px;
+    font-weight: bold;
+    color: var(--clr-dark-state-gray);
+    
+    .link
+    {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        gap: 10px;
+        
+        span
+        {
+            color: var(--clr-dark-state-gray);
+        }
+    }
+    
+    .icon
+    {
+        color: var(--clr-dark-state-gray);
+        height: 100%;
+        font-size: 30px;
+    }
+}

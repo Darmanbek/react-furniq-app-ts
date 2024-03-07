@@ -1,26 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { MdKeyboardArrowRight } from "react-icons/md";
-import { SlArrowRight } from "react-icons/sl";
-import ProductCard from "./ProductCard/ProductCard";
+import { Title, ProductCard } from "@/widgets";
 import "./sectionProducts.scss";
 
-const SectionProducts: React.FC = () => {
+interface SectionProductsProps {
+    children: React.ReactNode
+}
+
+const SectionProducts: React.FC<SectionProductsProps> = ({ children }) => {
     return (
         <div className="section-products">
             <div className="container">
                 <div className="products-inner">
                     <div className="products__top">
-                        <h1>
-                            <Link to="/" className="link">
-                                <span>Popular</span>
-                                <MdKeyboardArrowRight className="icon" />
-                            </Link>
-                        </h1>
+                        {children}
                     </div>
                     <div className="products__centre">
-                        {[...Array(8)].map((el) => (
-                            <ProductCard key={el} />
+                        {[...Array(8)].map((_, ind) => (
+                            <ProductCard key={ind} />
                         ))}
                     </div>
                     <div className="products__bottom">

@@ -5,42 +5,9 @@
     .products__top
     {
         padding: 20px 0;
-
-        h1
-        {
-            display: flex;
-            font-size: 30px;
-            line-height: 42px;
-            font-weight: bold;
-            color: var(--clr-dark-state-gray);
-            
-            gap: 20px;
-            
-            .link
-            {
-                // text-2xl flex items-end gap-2
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 100%;
-                gap: 5px;
-                
-                span
-                {
-                    color: var(--clr-dark-state-gray);
-                }
-            }
-            
-            .icon
-            {
-                color: var(--clr-dark-state-gray);
-                height: 100%;
-                font-size: 40px;
-            }
-        }
     } 
         
-        .products__centre
+    .products__centre
     {
         // py-5 grid gap-x-2 sm:gap-x-5 gap-y-14 grid-cols-2 sm:grid-cols-3 md:grid-cols-4
         display: grid;

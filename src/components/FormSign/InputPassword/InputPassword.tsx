@@ -11,6 +11,7 @@ const InputPassword: React.FC = () => {
                 id="password"
                 type="password"
                 placeholder="Password"
+                required
             />
         </div>
     );
