@@ -3,10 +3,12 @@ import { Routes, Route } from "react-router-dom";
 import { Header, Footer } from "@/components";
 import { 
     CartPage,
+    CategoryPage,
     DetailsPage,
     FavoritePage,
     HomePage, 
     NotFoundPage, 
+    ProfilePage, 
     SignInPage, 
     SignOnPage 
 } from "@/pages";
@@ -19,13 +21,16 @@ const App: React.FC = () => {
             <main>
                 <Routes>
                     <Route path="/" element={<HomePage />} />
+                    <Route path="/*" element={<NotFoundPage />} />
+
                     <Route path="/login" element={<SignInPage />} />
                     <Route path="/register" element={<SignOnPage />} />
+                    <Route path="/profile" element={<ProfilePage />} />
                     <Route path="/wishes" element={<FavoritePage />} />
                     <Route path="/cart" element={<CartPage />} />
-                    <Route path="/details" element={<DetailsPage />} />
+                    <Route path="/details/:productId" element={<DetailsPage />} />=
+                    <Route path="/category/:categoryId" element={<CategoryPage />} />
 
-                    <Route path="/*" element={<NotFoundPage />} />
                 </Routes>
             </main>
             <Footer />

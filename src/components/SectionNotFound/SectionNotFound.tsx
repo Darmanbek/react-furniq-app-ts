@@ -1,17 +1,20 @@
 import React from "react";
 import "./sectionNotFound.scss";
+import { useTranslation } from "react-i18next";
 
 const SectionNotFound: React.FC = () => {
+    const { t } = useTranslation()
+    
     return (
         <section className="section-not-found">
             <div className="container">
                 <div className="not-found-inner">
                     <h1>
                         <span>
-                            Not Found Page Title
+                            {t("notFoundPageTitle")}
                         </span>
                         <span>
-                            Not Found Page Text
+                            {t("notFoundPageText")}
                         </span>
                     </h1>
                 </div>

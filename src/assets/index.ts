@@ -6,3 +6,5 @@ export { default as NoImage } from "./img/noImage.jpg"
 export { default as FurniqLogo2 } from "./img/logofurniq.png"
 
 export { default as BgMain } from "./bg/bg-main.jpg"
+
+export { default as User } from "./img/user.png"

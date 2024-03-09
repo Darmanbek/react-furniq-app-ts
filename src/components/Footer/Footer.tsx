@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import {
     FaFacebookSquare,
     FaInstagram,
@@ -10,45 +11,47 @@ import { GooglePlay } from "@/assets";
 import "./footer.scss";
 
 const Footer: React.FC = () => {
+    const { t } = useTranslation()
+
     return (
         <footer className="footer">
             <div className="container">
                 <div className="footer-inner">
                     <div className="footer__item">
-                        <h2>O nas</h2>
+                        <h2>{t('aboutOfUs')}</h2>
                         <a
                             href="https://maps.app.goo.gl/aBxevJbN8FiEhxmr9"
                             target="_blank"
                             rel="noreferrer"
                         >
-                            Nukus - Punkt vidachi
+                            {t('whichCity')} {t('city')} - Punkt vidachi
                         </a>
-                        <Link to="/jobs">Vakanciy</Link>
+                        <Link to="/jobs">{t('carrers')}</Link>
                     </div>
                     <div className="footer__item">
-                        <h2>Polzovatelyam</h2>
-                        <a href="tel:+998907042502">Svyazatcya s nami</a>
-                        <Link to="/faq">Vopros - Otvet</Link>
+                        <h2>{t('forUsers')}</h2>
+                        <a href="tel:+998907042502">{t('connectWithUs')}</a>
+                        <Link to="/faq">{t('questionAnswer')}</Link>
                     </div>
                     <div className="footer__item">
-                        <h2>Dlya Predprinimateley</h2>
+                        <h2>{t('forEntrepreneur')}</h2>
                         <a
                             href="https://furniq-seller.vercel.app/"
                             target="_blank"
                             rel="noreferrer"
                         >
-                            Prodavayte na Furniq
+                            {t('sellOnFurniq')}
                         </a>
                         <a
                             href="https://furniq-seller.vercel.app/"
                             target="_blank"
                             rel="noreferrer"
                         >
-                            Vhod dlya prodavcov
+                            {t('SignInSellers')}
                         </a>
                     </div>
                     <div className="footer__item">
-                        <h2>Skachat prilojenie</h2>
+                        <h2>{t('downloadApp')}</h2>
                         <a
                             target="_blank"
                             href="https://play.google.com/"
@@ -61,7 +64,7 @@ const Footer: React.FC = () => {
                             />
                         </a>
                         <div className="footer__item">
-                            <h2>Furniq v socsetyah</h2>
+                            <h2>{t('FurniqInSocialMedias')}</h2>
                             <div className="footer-links">
                                 <a
                                     href="https://www.instagram.com"

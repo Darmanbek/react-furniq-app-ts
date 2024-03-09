@@ -12,11 +12,6 @@
         line-height: 24px;
     }
 
-    button
-    {
-        font-weight: bold;
-    }
-
     .top-location
     {
         display: flex;
@@ -31,10 +26,59 @@
         
     }
 
-    .top-nav ul
+    .top-nav 
     {
-        display: flex;
-        align-items: center;
-        gap: 50px;
+        .nav-items
+        {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+    
+            li
+            {
+                position: relative;
+
+                select
+                {
+                    cursor: pointer;
+                    color: var(--clr-dark-state-gray);
+                    background-color: var(--clr-white);
+                    border: 1px solid var(--clr-dark-state-gray);
+                    border-radius: 5px;
+                    padding: 5px;
+                    font-size: 16px;
+                    line-height: 24px;
+                }
+    
+                .lang-items
+                {
+                    position: absolute;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                    // justify-content: center;
+                    // align-items: center;
+                    left: -50%;
+                    top: 110%;
+                    width: 200%;
+                    overflow: hidden;
+                    z-index: 60;
+                    border: 2px solid var(--clr-light-blue);
+                    border-radius: 10px;
+                    background-color: var(--clr-white);
+                    button
+                    {
+                        width: 100%;
+                        padding: 5px 0;
+
+                        &:hover
+                        {   
+                            background-color: var(--clr-gray-2-5);
+                        }
+                    }
+
+                }
+            }
+        }
     }
 }

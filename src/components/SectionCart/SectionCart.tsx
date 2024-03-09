@@ -1,7 +1,6 @@
 import React from "react";
-import CartCard from "./CartCard/CartCard";
 import "./sectionCart.scss";
-import { Title } from "@/widgets";
+import { CartCard, Title } from "@/widgets";
 
 const SectionCart: React.FC = () => {
     return (

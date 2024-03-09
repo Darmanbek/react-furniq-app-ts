@@ -2,6 +2,7 @@
 {
     width: 100%;
 
+
     label
     {
         font-weight: bold;
@@ -22,5 +23,13 @@
         padding: 8px 16px;
         margin-bottom: 20px;
         margin-top: 8px;
+        border: 1px solid var(--clr-gray-2-5);
+
+        transition: border-color 150ms;
+
+        &:focus-within
+        {
+            border: 1px solid var(--clr-orange);
+        }
     }
 }
