@@ -1,26 +1,31 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { 
     SectionBanner,
     SectionProducts
 } from "@/components";
+import { useGetProductsQuery } from "@/services";
 import { Title } from "@/widgets";
 
 const HomePage: React.FC = () => {
+    const { t } = useTranslation()
+    const { data: products, isPending } = useGetProductsQuery();
+
     return (
         <>
             <SectionBanner />
-            <SectionProducts>
-                <Title title="Popular"/>
+            <SectionProducts products={products?.data} isPending={isPending}>
+                <Title title={t("popular")}/>
             </SectionProducts>
-            <SectionProducts>
-                <Title title="Xaitlik"/>
+            <SectionProducts products={products?.data} isPending={isPending}>
+                <Title title={t("urazaAit")}/>
             </SectionProducts>
-            <SectionProducts>
-                <Title title="Na rassrochku"/>
+            <SectionProducts products={products?.data} isPending={isPending}>
+                <Title title={t("installments")}/>
             </SectionProducts>
-            <SectionProducts>
-                <Title title="Bazar  ne vixodya"/>
-            </SectionProducts>
+            {/* <SectionProducts products={products?.data}>
+                <Title title="Bazar ne vixodya"/>
+            </SectionProducts> */}
         </>
     );
 };

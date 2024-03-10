@@ -1,7 +1,7 @@
-// import { message } from 'antd';
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import fetchSignIn from "./login.services";
 import { TLoginRequestWithEmail, TLoginRequestWithPhone } from "./login.types";
+import { message } from 'antd';
 
 const useSignInMutation = () => {
     const queryClient = useQueryClient();
@@ -10,9 +10,9 @@ const useSignInMutation = () => {
             fetchSignIn(value),
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ["login"] });
-            // message.success('Успешно!');
+            message.success('Успешно!');
         },
     });
 };
 
-export default useSignInMutation;
+export { useSignInMutation };

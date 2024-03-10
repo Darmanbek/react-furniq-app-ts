@@ -1,8 +1,20 @@
 import React from "react";
-import "./sectionCart.scss";
+import { NumericFormat } from "react-number-format";
+import { useTranslation } from "react-i18next";
+import Cookies from "js-cookie";
 import { CartCard, Title } from "@/widgets";
+import { useCartStore } from "@/store";
+import "./sectionCart.scss";
 
 const SectionCart: React.FC = () => {
+    const { cart } = useCartStore();
+    const { t } = useTranslation();
+
+    const lang = Cookies.get("lang") || "RU";
+
+    const getTranslate = (title: any) => (
+        lang === "RU" ? title.ru : lang === "QQ" ? title.latin : title.kiril
+    )
     return (
         <section className="section-cart">
             <div className="container">
@@ -10,8 +22,8 @@ const SectionCart: React.FC = () => {
                     <Title title="Home" subTitle="Korzinka" />
                     <div className="cart-block">
                         <div className="cart-list">
-                            {[...Array(4)].map((el) => (
-                                <CartCard key={el} />
+                            {cart.map((item, index) => (
+                                <CartCard key={index} data={item}/>
                             ))}
                         </div>
                         <div className="cart-order">
@@ -20,15 +32,21 @@ const SectionCart: React.FC = () => {
                                 <span>Tovari:</span>
                             </div>
                             <ul className="order-list">
-                                {[...Array(4)].map((el) => (
-                                    <li key={el}>
-                                    Produkt pro Dukt FurniQ, 200 cm3, material
+                                {cart.map((item) => (
+                                    <li key={item.id}>
+                                        {getTranslate(item.name)}
                                     </li>
                                 ))}
                             </ul>
                             <div className="order-total">
                                 <span>Itogo:</span>
-                                <span>399,000</span>
+                                <span>
+                                    <NumericFormat
+                                    value={cart.reduce((total, item) => total + item.price, 0)}
+                                    suffix={` ${t("currency")}`}
+                                    thousandSeparator=" " 
+                                    />
+                                </span>
                             </div>
                             <button className="order-button">
                                 Oformit Zakaz

@@ -95,20 +95,39 @@
             justify-content: space-between;
             align-items: end;
             padding-right: 8px;
+            
 
             &__price
             {
                 display: flex;
-                flex-direction: column;
-                font-size: 20px;
+                flex-direction: column; 
                 gap: 5px;
+
+
+                input
+                {
+                    border: none;
+                    font-size: 20px;
+                }
 
                 span
                 {
-                    color: var(--clr-gray-3);
-                    text-decoration: line-through;
-                    font-size: 15px;
+                    input
+                    {
+                        color: var(--clr-gray-3);
+                        text-decoration: line-through;
+                        font-size: 15px;
+                    }
+
                 }
+            }
+
+            &__button
+            {
+                position: absolute;
+                right: 12px;
+                bottom: 8px;
+                z-index: 50;
             }
         }
     }

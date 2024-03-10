@@ -1,13 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Title, ProductCard } from "@/widgets";
+import { useTranslation } from "react-i18next";
+import { ProductCard, SkeletonCard } from "@/widgets";
+import { TProduct } from "@/models";
 import "./sectionProducts.scss";
 
 interface SectionProductsProps {
+    products?: TProduct[];
+    isPending?: boolean
     children: React.ReactNode
 }
 
-const SectionProducts: React.FC<SectionProductsProps> = ({ children }) => {
+const SectionProducts: React.FC<SectionProductsProps> = ({ products, isPending, children }) => {
+    const { t } = useTranslation();
+    
     return (
         <div className="section-products">
             <div className="container">
@@ -15,9 +21,17 @@ const SectionProducts: React.FC<SectionProductsProps> = ({ children }) => {
                     <div className="products__top">
                         {children}
                     </div>
+                    {products?.length === 0 && <h1 className="not-found">{t("notFound")}</h1>}
+                    
                     <div className="products__centre">
-                        {[...Array(8)].map((_, ind) => (
-                            <ProductCard key={ind} />
+                        {isPending && [...Array(4)].map(el => (
+                            <SkeletonCard key={el} />
+                        ))}
+                        { products && products.map((product) => (
+                            <ProductCard 
+                            key={product.id} 
+                            product={product}
+                            />
                         ))}
                     </div>
                     <div className="products__bottom">
@@ -25,7 +39,7 @@ const SectionProducts: React.FC<SectionProductsProps> = ({ children }) => {
                             to="/"
                             className="products-more"
                         >
-                            Show more
+                            {t("showMore")}
                         </Link>
                     </div>
                 </div>

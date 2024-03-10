@@ -1,6 +1,14 @@
 .section-products
 {
     padding-bottom: 20px;
+    min-height: 100vh;
+
+    .not-found
+    {
+        text-align: center;
+        font-size: 64px;
+        color: var(--clr-dark-state-gray);
+    }
 
     .products__top
     {

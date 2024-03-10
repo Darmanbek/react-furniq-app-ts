@@ -6,9 +6,12 @@ export { default as ButtonCount } from "./ButtonCount/ButtonCount";
 export { default as Catalog } from "./Catalog/Catalog";
 
 export { default as ProductLike } from "./ProductLike/ProductLike";
+export { default as ProductShopping } from "./ProductShopping/ProductShopping";
 
 export { default as InputEmail } from "./Inputs/InputEmail/InputEmail";
 export { default as InputPassword } from "./Inputs/InputPassword/InputPassword";
 export { default as InputPhone } from "./Inputs/InputPhone/InputPhone";
 export { default as InputUserName } from "./Inputs/InputUserName/InputUserName";
 export { default as ButtonSubmit } from "./ButtonSubmit/ButtonSubmit";
+
+export { default as SkeletonCard } from "./SkeletonCard/SkeletonCard";

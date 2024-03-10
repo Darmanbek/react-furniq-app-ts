@@ -1,0 +1,16 @@
+.skeleton-card
+{
+    border-radius: 10px;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .skeleton-image,
+    .image
+    {
+        width: 100% !important;
+        height: 218px !important;
+    }
+}

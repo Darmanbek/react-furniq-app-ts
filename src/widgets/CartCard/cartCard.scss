@@ -117,12 +117,23 @@
                 line-height: 28px;
                 gap: 5px;
 
+                input
+                {
+                    border: none;
+                    text-align: end;
+                    font-size: 20px;
+                }
+
                 span
                 {
-                    color: var(--clr-gray-3);
-                    text-decoration: line-through;
-                    font-size: 16px;
-                    line-height: 21px;
+                    input
+                    {
+                        color: var(--clr-gray-3);
+                        text-decoration: line-through;
+                        font-size: 16px;
+                        line-height: 21px;
+                    }
+                    
                 }
             }
         }

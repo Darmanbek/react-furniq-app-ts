@@ -1,11 +1,14 @@
-import { SectionProducts } from "@/components";
-import { Title } from "@/widgets";
 import React from "react";
+import { SectionProducts } from "@/components";
+import { useWishesStore } from "@/store";
+import { Title } from "@/widgets";
 
 const FavoritePage: React.FC = () => {
+    const { wishes } = useWishesStore();
+
     return (
         <>
-            <SectionProducts>
+            <SectionProducts products={wishes}>
                 <Title title="Home" subTitle="Favourite"/>
             </SectionProducts>
         </>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Select } from "antd";
 import { IoLocationOutline } from "react-icons/io5";
 import Cookies from "js-cookie";
 import { Link } from "react-router-dom";
@@ -52,11 +53,21 @@ const HeaderTop: React.FC = () => {
                         <Link to="/">Moy zakazi</Link>
                     </li>
                     <li>
-                        <select onChange={(e) => handleChange(e.target.value)} defaultValue={getLanguage()}>
+                        {/* <select onChange={(e) => handleChange(e.target.value)} defaultValue={getLanguage()}>
                             <option value="RU">{t("languageRU")}</option>
                             <option value="QQ">{t("languageQQ")}</option>
                             <option value="QR">{t("languageQR")}</option>
-                        </select>
+                        </select> */}
+                        <Select
+                        defaultValue={getLanguage()}
+                        style={{ width: 150 }}
+                        onChange={handleChange}
+                        options={[
+                            { value: 'RU', label: t("languageRU") },
+                            { value: 'QQ', label: t("languageQQ") },
+                            { value: 'QR', label: t("languageQR") },
+                        ]}
+                        />
                         {/* <button>
                             {getLanguage()}
                         </button>
