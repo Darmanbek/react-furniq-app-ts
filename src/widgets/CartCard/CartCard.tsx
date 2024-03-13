@@ -1,74 +1,52 @@
 import React from "react";
-import { NumericFormat } from "react-number-format";
 import { useTranslation } from "react-i18next";
 import Cookies from "js-cookie";
-import { IoMdStar } from "react-icons/io";
-import { NoImage } from "@/assets";
-import { ButtonCount } from "@/widgets";
+import { ButtonCount, ProductImage, ProductView } from "@/widgets";
 import { TProduct } from "@/models";
 import "./cartCard.scss";
+import { priceFormatter } from "@/hooks";
 
 interface CartCardProps {
-    data: TProduct
+    cart: TProduct;
 }
 
-const CartCard: React.FC<CartCardProps> = ({ data }) => {
+const CartCard: React.FC<CartCardProps> = ({ cart }) => {
     const { t } = useTranslation();
     const lang = Cookies.get("lang") || "RU";
 
-    const getTranslate = (title: any) => (
-        lang === "RU" ? title.ru : lang === "QQ" ? title.latin : title.kiril
-    )
-
+    const getTranslate = (title: any) => ({
+            RU: title.ru,
+            QQ: title.latin,
+            QR: title.kiril,
+    }[lang]);
+    
     return (
         <div className="cart-card">
             <div className="cart-card__img">
-                <img 
-                src={data?.image ? data.image.url : NoImage}
-                alt={data?.image?.url}
-                />
+                {cart && <ProductImage image={cart.image} />}
             </div>
             <div className="cart-card__info">
                 <div className="info-desc">
                     <div className="info-top">
-                        <h1>
-                        {t(getTranslate(data.name))}
-                        </h1>
-                        {/* <h1>Produkt pro Dukt FurniQ, 200 cm3, material</h1> */}
-                        <div className="info-view">
-                            <div className="info-view__rating">
-                                <IoMdStar className="icon_star" />
-                                <span>4.5</span>
-                            </div>
-                            <span className="info-view__review">
-                                ({`${data.reviews_count} ${t("review")}`})
-                            </span>
-                        </div>
+                        <h1>{t(getTranslate(cart.name))}</h1>
+                        <ProductView
+                            rating={cart.rating}
+                            reviews_count={cart.reviews_count}
+                        />
                     </div>
                     <div className="info-bottom">
-                        <div className="info-seller">
-                            <span>Prodavec: Karsoft IT</span>
-                            
+                        <div className="info-create">
+                            <span>Created at: {cart.created_at}</span>
                         </div>
-                        <div className="info-order">
-                            <span>Dostavka: 5 biznes dney</span>
+                        <div className="info-update">
+                            <span>Updated at: {cart.updated_at}</span>
                         </div>
                     </div>
                 </div>
                 <div className="info-shop">
                     <div className="info-shop__price">
-                        <span>
-                            <NumericFormat
-                            value={data.price * 1.8}
-                            suffix={` ${t("currency")}`}
-                            thousandSeparator=" " 
-                            />
-                        </span>
-                        <NumericFormat
-                        value={data.price}
-                        suffix={` ${t("currency")}`}
-                        thousandSeparator=" " 
-                        />
+                        <span>{`${priceFormatter(cart.price * 1.8)} ${t("currency")}`}</span>
+                        {`${priceFormatter(cart.price)} ${t("currency")}`}
                     </div>
                     <ButtonCount />
                 </div>

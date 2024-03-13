@@ -1,12 +1,12 @@
 import React from "react";
-import { message } from 'antd';
-import { TbShoppingBagPlus } from 'react-icons/tb';
+import { message } from "antd";
+import { TbShoppingBagPlus } from "react-icons/tb";
 import { TProduct } from "@/models";
 import { useCartStore } from "@/store";
 import "./ProductShopping.scss";
 
 interface ProductShoppingProps {
-    data: TProduct
+    data: TProduct;
 }
 
 const ProductShopping: React.FC<ProductShoppingProps> = ({ data }) => {
@@ -14,14 +14,13 @@ const ProductShopping: React.FC<ProductShoppingProps> = ({ data }) => {
 
     const handleClick = () => {
         if (cart.find((item) => item.id === data.id)) {
-          removeCart(data.id);
-          message.error('Удален из корзины');
+            removeCart(data.id);
+            message.error("Удален из корзины");
         } else {
-          setCart(data);
-          message.success('Успешно');
+            setCart(data);
+            message.success("Успешно");
         }
-      };
-
+    };
 
     return (
         <button className="product-shopping" onClick={handleClick}>

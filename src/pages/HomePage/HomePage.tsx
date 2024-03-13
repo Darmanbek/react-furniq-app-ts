@@ -1,5 +1,4 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
 import { 
     SectionBanner,
     SectionProducts
@@ -8,24 +7,20 @@ import { useGetProductsQuery } from "@/services";
 import { Title } from "@/widgets";
 
 const HomePage: React.FC = () => {
-    const { t } = useTranslation()
     const { data: products, isPending } = useGetProductsQuery();
 
     return (
         <>
             <SectionBanner />
             <SectionProducts products={products?.data} isPending={isPending}>
-                <Title title={t("popular")}/>
+                <Title title="popular"/>
             </SectionProducts>
             <SectionProducts products={products?.data} isPending={isPending}>
-                <Title title={t("urazaAit")}/>
+                <Title title="urazaAit"/>
             </SectionProducts>
             <SectionProducts products={products?.data} isPending={isPending}>
-                <Title title={t("installments")}/>
+                <Title title="installments"/>
             </SectionProducts>
-            {/* <SectionProducts products={products?.data}>
-                <Title title="Bazar ne vixodya"/>
-            </SectionProducts> */}
         </>
     );
 };

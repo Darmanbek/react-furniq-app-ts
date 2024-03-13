@@ -3,6 +3,7 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    gap: 20px;
     color: var(--clr-dark-state-gray);
     height: 100%;
 
@@ -21,40 +22,6 @@
         justify-content: space-between;
         align-items: center;
         padding: 10px 0;
-
-        .info-view
-        {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-
-            &__rating
-            {
-                display: flex;
-                align-items: center;
-                gap: 2px;
-
-                .icon_star
-                {
-                    font-size: 15px;
-                    color: var(--clr-orange);
-                }
-
-                span
-                {
-                    color: var(--clr-gray-3);
-                    font-size: 15px;
-                    line-height: 21px;
-                }
-            }
-
-            &__review
-            {
-                font-size: 15px;
-                line-height: 21px;
-                color: var(--clr-gray-3);
-            }
-        }
 
         .info-seller span,
         .info-order span
@@ -143,9 +110,9 @@
     {
         display: flex;
         flex-direction: column;
+        gap: 5px;
         font-size: 30px;
         line-height: 42px;
-        gap: 5px;
 
         span
         {
@@ -180,6 +147,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        gap: 20px;
 
         button
         {
@@ -187,7 +155,8 @@
             font-size: 20px;
             line-height: 28px;
             border-radius: 10px;
-            padding: 18px 85px;
+            padding: 18px 0;
+            width: 100%;
         }
 
         .fill
@@ -202,6 +171,25 @@
             color: var(--clr-orange);
             background-color: var(--clr-white);
             border: 2px solid var(--clr-orange);
+        }
+    }
+
+    .info-desc
+    {
+        h2
+        {
+            font-size: 20px;
+            line-height: 28px;
+            font-weight: bold;
+        }
+
+        ul 
+        {
+            padding: 0 20px;
+            li
+            {
+                list-style: disc;
+            }
         }
     }
 }

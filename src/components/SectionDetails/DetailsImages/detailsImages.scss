@@ -14,6 +14,8 @@
         
         &__slide
         {
+            cursor: pointer;
+            height: 500px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -22,19 +24,12 @@
 
     .images-grid 
     {
-        .swiper-wrapper
-        {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-        }
 
-        &__block,
-        .swiper-slide
+        &__block
         {
+            background-color: var(--clr-gray-2-5);
+            height: 120px;
             cursor: pointer;
-            height: 100% !important;
-            width: 100% !important;
             border-radius: 10px;
             overflow: hidden;
             display: flex;
@@ -49,7 +44,6 @@
     {
         color: var(--clr-dark-state-gray);
         
-        // background-color: rgba(255, 255, 255, .3);
         background-color: rgba(184, 202, 213, 0.25);
 
         width: 40px;

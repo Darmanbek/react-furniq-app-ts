@@ -51,15 +51,9 @@
         {
             display: flex;
             justify-content: space-between;
-
-            input
-            {
-                border: none;
-                text-align: end;
-                color: var(--clr-dark-state-gray);
-                font-size: 16px;
-                line-height: 21px;
-            }
+            color: var(--clr-dark-state-gray);
+            font-size: 16px;
+            line-height: 21px;
         }
 
         .order-list

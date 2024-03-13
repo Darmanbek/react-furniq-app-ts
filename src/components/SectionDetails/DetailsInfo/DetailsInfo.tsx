@@ -1,66 +1,90 @@
 import React from "react";
-import { IoMdStar } from "react-icons/io";
-import { IoIosArrowForward } from "react-icons/io";
-import { ButtonCount, ProductLike } from "@/widgets";
+import { useTranslation } from "react-i18next";
+import Cookies from "js-cookie";
+import { ButtonCount, ProductLike, ProductView } from "@/widgets";
 import { NoImage } from "@/assets";
+import { TProductDetailsData } from "@/models";
+import { titleTranslate } from "@/hooks";
 import "./detailsInfo.scss";
-import { Link } from "react-router-dom";
 
-const DetailsInfo: React.FC = () => {
+interface DetailsInfoProps {
+    detailsData: TProductDetailsData;
+}
+
+const DetailsInfo: React.FC<DetailsInfoProps> = ({ detailsData }) => {
+    const { t } = useTranslation();
+    const lang = Cookies.get("lang") || "RU";
+
     return (
         <div className="details-info">
             <h1 className="info-title">
-                Produkt pro Dukt FurniQ, 200 cm3, material
+                {titleTranslate(detailsData.name, lang)}
             </h1>
             <div className="info-subtitle">
-                <div className="info-view">
-                    <div className="info-view__rating">
-                        <IoMdStar className="icon_star" />
-                        <span>4.5</span>
-                    </div>
-                    <span className="info-view__review">(1298 отзывов)</span>
-                </div>
+                <ProductView 
+                rating={detailsData.rating}
+                reviews_count={detailsData.reviews_count}
+                />
                 <div className="info-seller">
-                    <span>Prodavec: Karsoft IT</span>
+                    <span>{t("seller")}: {detailsData.seller.company_name}</span>
                 </div>
-                <div className="info-order">
-                    <span>Dostavka: 5 biznes dney</span>
-                </div>
-                <ProductLike />
+                <ProductLike id={detailsData.id}/>
             </div>
             <div className="info-views">
-                <h2 className="views-title">Turlari</h2>
+                <h2 className="views-title">{t("views")}</h2>
                 <ul className="views-images">
                     <li>
-                        <button><img src={NoImage} alt="Image" /></button>
+                        <button>
+                            <img src={NoImage} alt="Image" />
+                        </button>
                     </li>
                     <li>
-                        <button><img src={NoImage} alt="Image" /></button>
+                        <button>
+                            <img src={NoImage} alt="Image" />
+                        </button>
                     </li>
                     <li>
-                        <button><img src={NoImage} alt="Image" /></button>
+                        <button>
+                            <img src={NoImage} alt="Image" />
+                        </button>
                     </li>
                     <li className="no-active">
-                        <button><img src={NoImage} alt="Image" /></button>
+                        <button>
+                            <img src={NoImage} alt="Image" />
+                        </button>
                     </li>
                 </ul>
             </div>
             <div className="info-count">
-                <h2 className="count-title">Mugdar</h2>
+                <h2 className="count-title">{t("count")}</h2>
                 <ButtonCount size="large" />
             </div>
             <div className="info-price">
-                <span>34 630 059.6 сум</span>
-                19 238 922 сум
+                <span>
+                    {`${detailsData.price * 1.8} ${t("currency")}`}
+                </span>
+                {`${detailsData?.price} ${t("currency")}`}
             </div>
-            <Link to="/cart" className="info-credits">
-                <span>50,000/ay v rassrochku</span>
-                <IoIosArrowForward className="icon-forward" />
-            </Link>
+            
 
             <div className="info-add-cart">
-                <button className="fill">Add to cart</button>
-                <button className="stroke">Add to cart</button>
+                <button className="fill">{t("addToCart")}</button>
+                <button className="stroke">{t("buy")}</button>
+            </div>
+            
+            <div className="info-desc">
+                <h2 className="desc-title">Кратко о товаре: </h2>
+                <ul>
+                    <li>
+                        {detailsData.description.ru}
+                    </li>
+                    <li>
+                        {detailsData.description.kiril}
+                    </li>
+                    <li>
+                        {detailsData.description.latin}
+                    </li>
+                </ul>
             </div>
         </div>
     );

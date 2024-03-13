@@ -1,7 +1,12 @@
 import React, { useState } from "react";
+import { TProductDetailsData } from "@/models";
 import "./detailsDesc.scss";
 
-const DetailsDesc: React.FC = () => {
+interface DetailsDescProps {
+    detailsData: TProductDetailsData;
+}
+
+const DetailsDesc: React.FC<DetailsDescProps> = ({ detailsData }) => {
     const [select, setSelect] = useState(1)
 
     const isActive = (index: number) => {
@@ -10,7 +15,6 @@ const DetailsDesc: React.FC = () => {
         }
         return ""
     }
-
     return (
         <div className="details-desc">
             <nav className="desc-nav">

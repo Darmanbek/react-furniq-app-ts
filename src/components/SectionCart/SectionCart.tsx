@@ -1,10 +1,10 @@
 import React from "react";
-import { NumericFormat } from "react-number-format";
 import { useTranslation } from "react-i18next";
 import Cookies from "js-cookie";
 import { CartCard, Title } from "@/widgets";
 import { useCartStore } from "@/store";
 import "./sectionCart.scss";
+import { priceFormatter } from "@/hooks";
 
 const SectionCart: React.FC = () => {
     const { cart } = useCartStore();
@@ -12,24 +12,24 @@ const SectionCart: React.FC = () => {
 
     const lang = Cookies.get("lang") || "RU";
 
-    const getTranslate = (title: any) => (
-        lang === "RU" ? title.ru : lang === "QQ" ? title.latin : title.kiril
-    )
+    const getTranslate = (title: any) =>
+        lang === "RU" ? title.ru : lang === "QQ" ? title.latin : title.kiril;
+
     return (
         <section className="section-cart">
             <div className="container">
                 <div className="cart-inner">
-                    <Title title="Home" subTitle="Korzinka" />
+                    <Title title="home" subTitle="cart" />
                     <div className="cart-block">
                         <div className="cart-list">
                             {cart.map((item, index) => (
-                                <CartCard key={index} data={item}/>
+                                <CartCard key={index} cart={item} />
                             ))}
                         </div>
                         <div className="cart-order">
-                            <h2 className="order-title">Vash zakaz</h2>
+                            <h2 className="order-title">{t("yourOrder")}</h2>
                             <div className="order-count">
-                                <span>Tovari:</span>
+                                <span>{t("products")}</span>
                             </div>
                             <ul className="order-list">
                                 {cart.map((item) => (
@@ -39,17 +39,18 @@ const SectionCart: React.FC = () => {
                                 ))}
                             </ul>
                             <div className="order-total">
-                                <span>Itogo:</span>
+                                <span>{t("totalPrice")}</span>
                                 <span>
-                                    <NumericFormat
-                                    value={cart.reduce((total, item) => total + item.price, 0)}
-                                    suffix={` ${t("currency")}`}
-                                    thousandSeparator=" " 
-                                    />
+                                    {`${priceFormatter(
+                                        cart.reduce(
+                                            (total, item) => total + item.price,
+                                            0
+                                        )
+                                    )} ${t("currency")}`}
                                 </span>
                             </div>
                             <button className="order-button">
-                                Oformit Zakaz
+                                {t("checkout")}
                             </button>
                         </div>
                     </div>

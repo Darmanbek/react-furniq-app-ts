@@ -2,6 +2,7 @@ export const QR = {
     translation: {
         whichCity: "Каласы: ",
         city: "Нокис",
+        pochta: "Кабиллау пункти",
         languageRU: "Русский",
         languageQQ: "Qaraqalpaqsha",
         languageQR: "Каракалпакша",
@@ -49,5 +50,15 @@ export const QR = {
         messageSuccessPost: "Женисли косылды",
         messageSuccessUpdate: "Женисли озгерилди",
         seller: "Сатыушы",
+        myOrders: "Менинг буйиртпаларим",
+        checkout: "Дизимнен оширилиш",
+        yourOrder: "Сиздинг буйртпангиз",
+        totalPrice: "Жами:",
+        products: "Онимлер:",
+        similar: "Уксас",
+        addToCart: "Себетке косыу",
+        buy: "Сатып алыу",
+        count: "Мугдары: ",
+        views: "Түрлери: "
     },
 };

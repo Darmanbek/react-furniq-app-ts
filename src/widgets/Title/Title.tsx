@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { IoIosArrowForward } from "react-icons/io";
 import "./title.scss"
+import { useTranslation } from "react-i18next";
 
 interface TitleProps {
     title: string;
@@ -10,12 +11,14 @@ interface TitleProps {
 }
 
 const Title: React.FC<TitleProps> = ({ title, subTitle }) => {
+    const { t } = useTranslation()
+
     return (
         <h1 className="head-title">
             <Link to="/" className="link">
-                <span>{ title }</span>
+                <span>{ t(title) }</span>
                 <IoIosArrowForward className="icon" />
-                {subTitle && <span>{subTitle}</span>}
+                {subTitle && <span>{t(subTitle)}</span>}
             </Link>
         </h1>
     );

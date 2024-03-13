@@ -1,27 +1,32 @@
 import React from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
-import { TProduct } from "@/models";
 import { useWishesStore } from "@/store";
 import "./productLike.scss";
+import { useGetProductsQuery } from "@/services";
 
 interface ProductLikeProps {
-    data: TProduct;
+    id: number;
 }
 
-const ProductLike: React.FC<ProductLikeProps> = ({ data }) => {
+const ProductLike: React.FC<ProductLikeProps> = ({ id }) => {
     const { wishes, setWishes, removeWishes } = useWishesStore();
+    const { data } = useGetProductsQuery()
 
     const handleClick = () => {
-        if (wishes.find((wish) => data.id === wish.id)) {
-            removeWishes(data.id);
+        if (!data) return
+        if (wishes.find((wish) => id === wish.id)) {
+            removeWishes(id);
         } else {
-            setWishes(data);
+            const product = data.data.find((product) => product.id === id)
+            if (product) {
+                setWishes(product);
+            }
         }
     };
 
     return (
         <button className="product-like" onClick={handleClick}>
-            {wishes.find((wish) => wish.id === data.id) ? (
+            {wishes.find((wish) => wish.id === id) ? (
                 <FaHeart className="icon-like fill" />
             ) : (
                 <FaRegHeart className="icon-like" />

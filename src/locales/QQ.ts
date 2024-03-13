@@ -2,6 +2,7 @@ export const QQ = {
     translation: {
         whichCity: "Qalasi: ",
         city: "Nokis",
+        pochta: "Qabillaw punkti",
         languageRU: "Русский",
         languageQQ: "Qaraqalpaqsha",
         languageQR: "Каракалпакша",
@@ -49,5 +50,15 @@ export const QQ = {
         messageSuccessPost: "Jenisli qosildi",
         messageSuccessUpdate: "Jenisli ozgerildi",
         seller: "Satiwshi",
+        myOrders: "Menin buyirtpalarim",
+        checkout: "Dizimnen oshirilish",
+        yourOrder: "Sizdin buyirtpaniz",
+        totalPrice: "Jami:",
+        products: "Onimler:",
+        similar: "Uqsas",
+        addToCart: "Sebetke qosiw",
+        buy: "Satip aliw",
+        count: "Mugdari: ",
+        views: "Turleri: "
     },
 };

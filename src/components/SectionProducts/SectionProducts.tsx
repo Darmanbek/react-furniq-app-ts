@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { ProductCard, SkeletonCard } from "@/widgets";
 import { TProduct } from "@/models";
 import "./sectionProducts.scss";
+import { Skeleton } from "antd";
 
 interface SectionProductsProps {
     products?: TProduct[];
@@ -24,8 +25,8 @@ const SectionProducts: React.FC<SectionProductsProps> = ({ products, isPending, 
                     {products?.length === 0 && <h1 className="not-found">{t("notFound")}</h1>}
                     
                     <div className="products__centre">
-                        {isPending && [...Array(4)].map(el => (
-                            <SkeletonCard key={el} />
+                        {isPending && [...Array(4)].map((_, index) => (
+                            <SkeletonCard key={index} />
                         ))}
                         { products && products.map((product) => (
                             <ProductCard 
@@ -35,12 +36,19 @@ const SectionProducts: React.FC<SectionProductsProps> = ({ products, isPending, 
                         ))}
                     </div>
                     <div className="products__bottom">
-                        <Link
+                        {isPending && 
+                        <Skeleton.Button 
+                        size="large"
+                        className="skeleton-more"
+                        active
+                        block
+                        />}
+                       {products &&  <Link
                             to="/"
                             className="products-more"
                         >
                             {t("showMore")}
-                        </Link>
+                        </Link>}
                     </div>
                 </div>
             </div>

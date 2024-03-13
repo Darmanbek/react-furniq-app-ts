@@ -2,6 +2,7 @@ export const RU = {
     translation: {
         whichCity: "Город: ",
         city: "Нукус",
+        pochta: "Пункт выдачи",
         languageRU: "Русский",
         languageQQ: "Qaraqalpaqsha",
         languageQR: "Каракалпакша",
@@ -49,5 +50,15 @@ export const RU = {
         messageSuccessPost: "Успешно добавлен",
         messageSuccessUpdate: "Успешно изменен",
         seller: "Продавец",
+        myOrders: "Мои заказы",
+        checkout: "Оформить заказ",
+        yourOrder: "Ваш заказ",
+        totalPrice: "Итого:",
+        products: "Товары:",
+        similar: "Похожие",
+        addToCart: "Добавить в корзину",
+        buy: "Купить",
+        count: "Количество: ",
+        views: "Виды: "
     },
 };

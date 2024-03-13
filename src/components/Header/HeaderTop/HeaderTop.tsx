@@ -31,8 +31,7 @@ const HeaderTop: React.FC = () => {
                     target="_blank"
                     rel="noreferrer"
                 >
-                    <span className="location-city">{t("whichCity")} {t("city")}</span> - Punkt
-                    vidachi
+                    <span className="location-city">{t("whichCity")} {t("city")}</span> - {t("pochta")}
                 </a>
             </div>
             <nav className="top-nav">
@@ -50,7 +49,7 @@ const HeaderTop: React.FC = () => {
                         <Link to="/faq">{t("questionAnswer")}</Link>
                     </li>
                     <li>
-                        <Link to="/">Moy zakazi</Link>
+                        <Link to="/">{t("myOrders")}</Link>
                     </li>
                     <li>
                         {/* <select onChange={(e) => handleChange(e.target.value)} defaultValue={getLanguage()}>

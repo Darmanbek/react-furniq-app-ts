@@ -9,7 +9,7 @@ const FavoritePage: React.FC = () => {
     return (
         <>
             <SectionProducts products={wishes}>
-                <Title title="Home" subTitle="Favourite"/>
+                <Title title="home" subTitle="wishes"/>
             </SectionProducts>
         </>
     );
