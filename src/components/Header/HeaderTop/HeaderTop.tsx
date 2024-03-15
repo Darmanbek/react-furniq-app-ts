@@ -4,10 +4,13 @@ import { IoLocationOutline } from "react-icons/io5";
 import Cookies from "js-cookie";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useAuthPersistStore } from "@/store";
+import { FurniqLogo as Logo } from "@/assets";
 import "./headerTop.scss";
 
 const HeaderTop: React.FC = () => {
     const { t, i18n } = useTranslation();
+    const { token } = useAuthPersistStore()
 
     const handleChange = (value: string) => {
         i18n.changeLanguage(value);
@@ -24,6 +27,11 @@ const HeaderTop: React.FC = () => {
 
     return (
         <div className="header__top">
+            <div className="top-logo">
+                <Link to="/">
+                    <img src={Logo} alt="Logo" />
+                </Link>
+            </div>
             <div className="top-location">
                 <IoLocationOutline />
                 <a
@@ -48,15 +56,12 @@ const HeaderTop: React.FC = () => {
                     <li>
                         <Link to="/faq">{t("questionAnswer")}</Link>
                     </li>
+                    {token &&
                     <li>
                         <Link to="/">{t("myOrders")}</Link>
                     </li>
+                    }
                     <li>
-                        {/* <select onChange={(e) => handleChange(e.target.value)} defaultValue={getLanguage()}>
-                            <option value="RU">{t("languageRU")}</option>
-                            <option value="QQ">{t("languageQQ")}</option>
-                            <option value="QR">{t("languageQR")}</option>
-                        </select> */}
                         <Select
                         defaultValue={getLanguage()}
                         style={{ width: 150 }}
@@ -67,23 +72,17 @@ const HeaderTop: React.FC = () => {
                             { value: 'QR', label: t("languageQR") },
                         ]}
                         />
-                        {/* <button>
-                            {getLanguage()}
-                        </button>
-                        <ul className="lang-items">
-                            <li>
-                                <button onClick={(e) => handleChange("RU")}>{t("languageRU")}</button>
-                            </li>
-                            <li>
-                                <button onClick={(e) => handleChange("QQ")}>{t("languageQQ")}</button>
-                            </li>
-                            <li>
-                                <button onClick={(e) => handleChange("QR")}>{t("languageQR")}</button>
-                            </li>
-                        </ul> */}
                     </li>
                 </ul>
             </nav>
+            <a 
+                href="https://play.google.com/"
+                className="button-furniq-app"
+                target="_blank"
+                rel="noreferrer"
+            >
+                Скачать приложение
+            </a>
         </div>
     );
 };

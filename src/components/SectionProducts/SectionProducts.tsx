@@ -43,7 +43,7 @@ const SectionProducts: React.FC<SectionProductsProps> = ({ products, isPending, 
                         active
                         block
                         />}
-                       {products &&  <Link
+                       {products && products.length > 0 &&  <Link
                             to="/"
                             className="products-more"
                         >

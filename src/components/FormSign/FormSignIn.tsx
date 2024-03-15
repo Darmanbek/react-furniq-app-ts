@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FurniqLogo2 as Logo } from "@/assets";
 import { useTranslation } from "react-i18next";
-import { useSignInMutation } from "@/services";
+import { useSignInEmailMutation, useSignInPhoneMutation } from "@/services";
 import { useAuthPersistStore } from "@/store";
 import "./formSign.scss";
 import { ButtonSubmit, InputEmail, InputPassword, InputPhone } from "@/widgets";
@@ -11,27 +11,45 @@ const FormSignIn: React.FC = () => {
     const navigate = useNavigate();
     const { t } = useTranslation();
     const [withEmail, setWithEmail] = useState(false);
-    const { data, mutate: login, isPending, isSuccess } = useSignInMutation();
+    const { 
+        data: dataPhone, 
+        mutate: loginPhone, 
+        isPending: isPendingPhone, 
+        isSuccess: isSuccessPhone 
+    } = useSignInPhoneMutation();
+    const { 
+        data: dataEmail, 
+        mutate: loginEmail, 
+        isPending: isPendingEmail, 
+        isSuccess: isSuccessEmail 
+    } = useSignInEmailMutation();
     const { signIn } = useAuthPersistStore();
 
     const onFinish: React.FormEventHandler<HTMLFormElement> = (e: any) => {
         e.preventDefault();
-        login(
-            withEmail
-                ? { email: e.target[0].value, password: e.target[1].value }
-                : {
-                      phone: e.target[0].value.split(" ").join(""),
-                      password: e.target[1].value,
-                  }
-        );
+        if (withEmail) {
+            loginEmail({ email: e.target[0].value, password: e.target[1].value })
+        } else {
+            loginPhone({
+                phone: e.target[0].value.split(" ").join(""),
+                password: e.target[1].value,
+            })
+        }
     };
 
     React.useEffect(() => {
-        if (isSuccess) {
-            signIn({ token: data?.data.token });
-            navigate("/");
+        if (withEmail) {
+            if (isSuccessEmail) {
+                signIn({ token: dataEmail?.data.token });
+                navigate("/");
+            }
+        } else {
+            if (isSuccessPhone) {
+                signIn({ token: dataPhone?.data.token });
+                navigate("/");
+            }
         }
-    }, [isSuccess, signIn, data, navigate]);
+    }, [isSuccessEmail, isPendingPhone, signIn, dataPhone, dataEmail, navigate]);
     return (
         <div className="form-container">
             <div className="form-logo">
@@ -46,7 +64,7 @@ const FormSignIn: React.FC = () => {
                     <InputPassword />
                 </div>
                 <div className="form-submit">
-                    <ButtonSubmit isPending={isPending}/>
+                    <ButtonSubmit isPending={isPendingEmail || isPendingPhone}/>
                 </div>
             </form>
             <div className="form-bottom">

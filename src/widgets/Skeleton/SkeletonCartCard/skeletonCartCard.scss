@@ -1,0 +1,29 @@
+.skeleton-cart-card
+{
+    display: flex;
+    gap: 25px;
+    
+    &__img
+    {
+        height: 250px;
+        width: 350px;
+        border-radius: 10px;
+        overflow: hidden;
+
+        .skeleton-image
+        {
+            width: 100% !important;
+            height: 100% !important;
+        }
+    }
+
+    &__info
+    {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    
+    }
+}

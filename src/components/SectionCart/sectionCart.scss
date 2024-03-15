@@ -1,7 +1,6 @@
 .section-cart
 {
     padding: 20px 0;
-
     .cart-inner
     {
         display: flex;
@@ -12,21 +11,37 @@
     .cart-block
     {
         display: flex;
+        width: 100%;
         justify-content: space-between;
         gap: 25px;
 
+        @media screen and (max-width: 768px) {
+            flex-direction: column;
+            justify-content: start;
+        }
+    }
+
+    .not-found
+    {
+        min-height: 50vh;
+        color: var(--clr-dark-state-gray);
+        width: 100%;
+        font-size: 64px;
+        text-align: center;
     }
 
     .cart-list
     {
         display: flex;
         flex-direction: column;
+        width: 100%;
         gap: 25px;
     }
 
     .cart-order
     {
-        min-width: 264px;
+        max-width: 300px;
+        width: 100%;
         display: flex;
         flex-direction: column;
         gap: 20px;
@@ -34,6 +49,10 @@
         border-radius: 10px;
         padding: 15px;
         color: var(--clr-dark-state-gray);
+
+        @media screen and (max-width: 768px) {
+            max-width: 100%;
+        }
 
         span
         {
@@ -62,15 +81,34 @@
             flex-direction: column;
             gap: 15px;
 
+            @media screen and (max-width: 768px) {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+
+            @media screen and (max-width: 480px) {
+                display: flex;
+                flex-direction: column;
+            }
+
             li
             {
-                padding: 12px 0;
-                text-align: center;
-                font-size: 10px;
-                line-height: 14px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 12px;
+                // text-align: center;
                 background-color: var(--clr-gray-2-5);
                 border-radius: 10px;
-                text-wrap: nowrap;
+                overflow: hidden;
+                
+                span
+                {
+                    text-wrap: nowrap;
+                    font-size: 10px;
+                    line-height: 14px;
+                    color: var(--clr-dark-state-gray);
+                }
             }
         }
 

@@ -4,9 +4,11 @@ import { FurniqLogo2 as Logo } from "@/assets";
 import { useSignOnMutation } from "@/services";
 import { useAuthPersistStore } from "@/store";
 import { ButtonSubmit, InputPassword, InputPhone, InputUserName } from "@/widgets";
+import { useTranslation } from "react-i18next";
 import "./formSign.scss";
 
 const FormRegister: React.FC = () => {
+    const { t } = useTranslation()
     const navigate = useNavigate();
     const {
         data,
@@ -49,9 +51,9 @@ const FormRegister: React.FC = () => {
                 <ButtonSubmit isPending={isPending} isRegister/>
             </form>
             <div className="form-bottom sign-on">
-                <span>Если есть аккаунт? </span>
+                <span>{t("loginIsDefined")} </span>
                 <Link to="/login" className="link-sign-on">
-                    Войти
+                    {t("login")}
                 </Link>
             </div>
         </div>

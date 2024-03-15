@@ -1,19 +1,21 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { TProduct } from "@/models";
+import { TCartProduct } from "@/models";
 
 interface IUseCartStore {
-    cart: TProduct[];
-    setCart: (product: TProduct) => void;
+    cart: TCartProduct[];
+    setCart: (cartProduct: TCartProduct) => void;
     removeCart: (id: number) => void;
+    findCart: (id: number) => TCartProduct | undefined;
+    updateCart: (cartProduct: TCartProduct) => void;
 }
 
 const useCartStore = create(
     persist<IUseCartStore>(
         (set, get) => ({
             cart: [],
-            setCart: (product: TProduct) =>
-                set({ cart: [...get().cart, product] }),
+            setCart: (cartProduct: TCartProduct) =>
+                set({ cart: [...get().cart, cartProduct] }),
             removeCart: (id: number) => {
                 const existProduct = get().cart.filter(
                     (productInCart) => productInCart.id !== -1
@@ -23,6 +25,24 @@ const useCartStore = create(
                     (productInCart) => productInCart.id !== id
                 );
                 return set({ cart: removeProduct });
+            },
+            findCart: (id: number) => {
+                const findCartProduct = get().cart.find(
+                    (item) => item.id === id
+                );
+                if (findCartProduct) {
+                    return findCartProduct;
+                }
+                return;
+            },
+            updateCart: (cartProduct: TCartProduct) => {
+                const newCartProducts = get().cart.map((item) => {
+                    if (item.id === cartProduct.id) {
+                        return cartProduct;
+                    }
+                    return item;
+                });
+                return set({ cart: newCartProducts });
             },
         }),
         {

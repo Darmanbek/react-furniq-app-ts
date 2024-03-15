@@ -4,16 +4,38 @@
     line-height: 42px;
     font-weight: bold;
     color: var(--clr-dark-state-gray);
+    height: 100%;
+
+    @media screen and (max-width: 480px) {
+        font-size: 24px;
+        line-height: 31px;
+    }
     
-    .link
+    .title-inner
     {
         display: flex;
         align-items: center;
         height: 100%;
         gap: 10px;
+    }
+
+
+    .link
+    {
+        display: flex;
+        height: 100%;
+        align-items: center;
+
+        &.sub-sub-title
+        {
+            @media screen and (max-width: 480px) {
+                display: none;
+            }
+        }
         
         span
         {
+            height: 100%;
             color: var(--clr-dark-state-gray);
         }
     }
@@ -23,5 +45,17 @@
         color: var(--clr-dark-state-gray);
         height: 100%;
         font-size: 30px;
+
+        &.sub-sub-title
+        {
+            @media screen and (max-width: 480px) {
+                display: none;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            font-size: 24px;
+            line-height: 31px;
+        }
     }
 }

@@ -4,6 +4,15 @@
     align-items: center;
     gap: 30px;
 
+    @media screen and (max-width: 768px) {
+        display: none;
+    }
+
+    .bottom-left__logo
+    {
+        width: 100px;
+    }
+
     .bottom-left__catalog
     {
         position: relative;

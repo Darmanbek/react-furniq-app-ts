@@ -104,6 +104,28 @@
             line-height: 28px;
             font-weight: bold;
         }
+
+        .count-block
+        {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            .quantity
+            {
+                font-size: 16px;
+                line-height: 21px;
+                &.more
+                {
+                    color: green;
+                }
+
+                &.less
+                {
+                    color: crimson;
+                }
+            }
+        }
     }
 
     .info-price
@@ -114,13 +136,33 @@
         font-size: 30px;
         line-height: 42px;
 
-        span
+        .price-cash
         {
-            color: var(--clr-gray-3);
-            text-decoration: line-through;
-            font-size: 20px;
-            line-height: 28px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            .cash-price
+            {
+                color: var(--clr-gray-3);
+                text-decoration: line-through;
+                font-size: 20px;
+                line-height: 28px;
+            }
+
+            .cash-title
+            {
+                background-color: var(--clr-orange);
+                color: var(--clr-white);
+                padding: 5px 10px;
+                border-radius: 10px;
+                overflow: hidden;
+                font-size: 18px;
+                line-height: 26px;
+            }
+
         }
+
     }
 
     .info-credits

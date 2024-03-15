@@ -3,9 +3,12 @@
 
     .icon-like
     {
-        // text-xl text-orange-500 transition-transform active:scale-75
         font-size: 20px;
         transition: transform 150ms, color 150ms;
+
+        @media screen and (max-width: 480px) {
+            font-size: 22px;
+        }  
 
         &:active
         {

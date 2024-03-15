@@ -5,6 +5,10 @@
     justify-content: space-between;
     align-items: center;
 
+    @media screen and (max-width: 768px) {
+        // display: none;
+    }
+
     a, button
     {
         color: var(--clr-dark-state-gray);
@@ -12,8 +16,20 @@
         line-height: 24px;
     }
 
+    .top-logo
+    {
+        display: none;
+
+        @media screen and (max-width: 768px) {
+            display: block;
+        }
+    }
+
     .top-location
     {
+        @media screen and (max-width: 768px) {
+            display: none;
+        }
         display: flex;
         align-items: center;
         gap: 4px;
@@ -28,6 +44,9 @@
 
     .top-nav 
     {
+        @media screen and (max-width: 768px) {
+            display: none;
+        }
         .nav-items
         {
             display: flex;
@@ -81,5 +100,18 @@
                 }
             }
         }
+    }
+    
+    .button-furniq-app
+    {
+        display: none;
+        border-radius: 10px;
+        background-color: var(--clr-orange);
+        padding: 8px 12px;
+        color: var(--clr-white);
+        
+        @media screen and (max-width: 768px) {
+            display: block;
+        }  
     }
 }

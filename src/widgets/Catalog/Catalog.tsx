@@ -1,17 +1,18 @@
 import React from "react";
-import Cookies from "js-cookie";
+import { Skeleton } from 'antd';
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { useGetCategoriesQuery } from "@/services";
+import { nameTranslate } from "@/hooks";
 import "./catalog.scss";
-import { CircularProgress } from "@mui/material";
-import { Skeleton } from 'antd';
 
-const Catalog: React.FC = () => {
+interface CatalogProps {
+    handleShowCatalog: () => void
+}
+
+const Catalog: React.FC<CatalogProps> = ({ handleShowCatalog }) => {
     const { data: categories, isPending } = useGetCategoriesQuery();
     const { t } = useTranslation();
-
-    const lang = Cookies.get("lang" ? "lang" : "RU");
 
     if (isPending) return <Skeleton active paragraph={{rows: 8}} />
 
@@ -22,18 +23,13 @@ const Catalog: React.FC = () => {
                 {categories &&
                     categories.data.map(({ id, name }) => (
                         <Link
+                            onClick={handleShowCatalog}
                             key={id}
                             to={`category/${id.toString()}`}
                             className="list-link"
                         >
                             <span>
-                                {t(
-                                    lang === "RU"
-                                        ? name.ru
-                                        : lang === "QQ"
-                                        ? name.latin
-                                        : name.kiril
-                                )}
+                                {t(nameTranslate(name))}
                             </span>
                         </Link>
                     ))}

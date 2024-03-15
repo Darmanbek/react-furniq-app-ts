@@ -32,7 +32,7 @@ const SectionDetails: React.FC<SectionDetailsProps> = ({
                         )}
                         {isPending && <SkeletonDetailsInfo />}
                         {detailsData && (
-                            <DetailsInfo detailsData={detailsData} />
+                            <DetailsInfo detailsData={detailsData}/>
                         )}
                     </div>
                     {isPending && <SkeletonDetailsDesc />}

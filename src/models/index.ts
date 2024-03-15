@@ -17,6 +17,24 @@ export type TProduct = {
     updated_at: string;
 };
 
+export type TCartProduct = {
+    id: number;
+    category: TCategory;
+    name: TName;
+    price: number;
+    discount_price: number | null;
+    image: null | TImages;
+    rating: number;
+    reviews_count: number;
+    created_at: string;
+    updated_at: string;
+    seller: TSeller;
+    color: TCategory;
+    material: TCategory;
+    quantity: number;
+    count: number;
+};
+
 export type TCategory = {
     id: number;
     name: TName;
@@ -39,6 +57,7 @@ export type TProductDetailsData = {
     name: TName;
     price: number;
     discount_price: number | null;
+    image: null | TImages;
     rating: number;
     reviews_count: number;
     description: TName;
@@ -49,5 +68,12 @@ export type TProductDetailsData = {
     number_sold: number;
     created_at: string;
     updated_at: string;
-  };
+};
   
+
+export type TLoginMe = {
+    name: string;
+    email: string;
+    phone: string;
+    role: string;
+}

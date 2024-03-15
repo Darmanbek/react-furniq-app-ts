@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            {t('whichCity')} {t('city')} - Punkt vidachi
+                            {t('whichCity')} {t('city')} - {t("pochta")}
                         </a>
                         <Link to="/jobs">{t('carrers')}</Link>
                     </div>

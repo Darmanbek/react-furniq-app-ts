@@ -1,45 +1,46 @@
-import { NoImage } from "@/assets";
 import React from "react";
-import { ButtonCount } from "@/widgets"
-import { IoMdStar } from "react-icons/io";
+import { useTranslation } from "react-i18next";
+import { nameTranslate, priceFormatter } from "@/hooks";
+import { order } from "./order";
 import "./orderCard.scss"
 
 const OrderCard: React.FC = () => {
+    const { t } = useTranslation()
+
     return (
         <div className="order-card">
-            <div className="order-card__img">
-                <img src={NoImage} alt="No Image" />
-            </div>
+            <h1 className="order-card-id">ID заказа 10539665</h1>
             <div className="order-card__info">
-                <div className="info-desc">
-                    <div className="info-top">
-                        <h1>Produkt pro Dukt FurniQ, 200 cm3, material</h1>
-                        <div className="info-view">
-                            <div className="info-view__rating">
-                                <IoMdStar className="icon_star" />
-                                <span>4.5</span>
-                            </div>
-                            <span className="info-view__review">
-                                (1298 отзывов)
-                            </span>
-                        </div>
-                    </div>
-                    <div className="info-bottom">
-                        <div className="info-seller">
-                            <span>Prodavec: Karsoft IT</span>
-                        </div>
-                        <div className="info-order">
-                            <span>Dostavka: 5 biznes dney</span>
-                        </div>
-                    </div>
+                <div className="order-block status">
+                    <span>Статус:</span>
+                    <span>{nameTranslate(order.status.name)}</span>
                 </div>
-                <div className="info-shop">
-                    <div className="info-shop__price">
-                        <span>34 630 059.6 сум</span>
-                        19 238 922 сум
-                    </div>
-                    <ButtonCount />
+                <div className="order-block">
+                    <span>Дата заказа:</span>
+                    <span>{order.created_at}</span>
                 </div>
+                <div className="order-block">
+                    <span>Дата доставки:</span>
+                    <span>{order.updated_at}</span>
+                </div>
+                <div className="order-block">
+                    <span>{t("whichCity")}</span>
+                    <span>{t("city")}</span>
+                </div>
+                <div className="order-block">
+                    <span>Сумма заказа:</span>
+                    <span>{priceFormatter(order.sum)} {t("currency")}</span>
+                </div>
+                <div className="order-block">
+                    <span>Способ оплаты:</span>
+                    <span>{nameTranslate(order.payment_type.name)}</span>
+                </div>
+            </div>
+            <div className="order-product">
+                <h3 className="order-product-title">Продукты {order.products.length}:</h3>
+                {/* {order.products.map(product => (
+                    <OrderCardProduct product={product} key={product.id}/>
+                ))} */}
             </div>
         </div>
     );

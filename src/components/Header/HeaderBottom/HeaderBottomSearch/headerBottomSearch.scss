@@ -9,9 +9,6 @@
 
     transition: border-color 150ms;
 
-    @media screen and (max-width: 1024px) {
-        max-width: 350px;
-    }
 
     &:focus-within
     {
@@ -67,6 +64,10 @@
         align-items: center;
         background-color: var(--clr-gray-1);
         padding: 8px 30px;  
+
+        @media screen and (max-width: 480px) {
+            padding: 8px 15px;  
+        } 
         
         transition: background 150ms;
         

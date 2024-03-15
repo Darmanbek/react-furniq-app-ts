@@ -15,7 +15,7 @@ const HeaderBottomSearch: React.FC = () => {
                 value={searchValue}
                 onChange={(e) => setSearchValue(e.target.value)}
                 type="text" 
-                placeholder={t("searhPlaceholder" )}
+                placeholder={t("searhPlaceholder")}
                 />
                 {searchValue && (
                 <button>

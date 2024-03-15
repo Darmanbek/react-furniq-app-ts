@@ -15,3 +15,5 @@ export { default as FormSignIn } from "./FormSign/FormSignIn";
 export { default as SectionProfile } from "./SectionProfile/SectionProfile";
 
 export { default as Footer } from "./Footer/Footer";
+
+export { default as Aside } from "./Aside/Aside";

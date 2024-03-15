@@ -20,3 +20,4 @@ export { default as SkeletonCard } from "./Skeleton/SkeletonCard/SkeletonCard";
 export { default as SkeletonDetailsImages } from "./Skeleton/SkeletonDetails/SkeletonDetailsImages";
 export { default as SkeletonDetailsInfo } from "./Skeleton/SkeletonDetails/SkeletonDetailsInfo";
 export { default as SkeletonDetailsDesc } from "./Skeleton/SkeletonDetails/SkeletonDetailsDesc";
+export { default as SkeletonCartCard } from "./Skeleton/SkeletonCartCard/SkeletonCartCard";

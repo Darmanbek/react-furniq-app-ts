@@ -5,7 +5,7 @@
 
     .not-found-inner
     {
-        min-height: 100vh;
+        min-height: 50vh;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -21,8 +21,21 @@
             {
                 color: var(--clr-dark-state-gray);
                 font-size: 64px;
+                line-height: 70px;
                 text-align: center;
+
+                @media screen and (max-width: 768px) {
+                    font-size: 48px;
+                    line-height: 54px;
+                }
+
+                @media screen and (max-width: 480px) {
+                    font-size: 36px;
+                    line-height: 41px;
+                }
             }
+
+            
             // text-5xl text-gray-600 text-center
         }
     }

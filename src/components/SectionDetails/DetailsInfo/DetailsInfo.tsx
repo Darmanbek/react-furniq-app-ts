@@ -1,10 +1,11 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import Cookies from "js-cookie";
 import { ButtonCount, ProductLike, ProductView } from "@/widgets";
 import { NoImage } from "@/assets";
-import { TProductDetailsData } from "@/models";
-import { titleTranslate } from "@/hooks";
+import { TCartProduct, TProductDetailsData } from "@/models";
+import { nameTranslate, priceFormatter, useCount } from "@/hooks";
+import { useCartStore, useProductsStore } from "@/store";
+import { message } from "antd";
 import "./detailsInfo.scss";
 
 interface DetailsInfoProps {
@@ -13,12 +14,44 @@ interface DetailsInfoProps {
 
 const DetailsInfo: React.FC<DetailsInfoProps> = ({ detailsData }) => {
     const { t } = useTranslation();
-    const lang = Cookies.get("lang") || "RU";
+    const { setCart, removeCart, findCart } = useCartStore()
+    const { getProductById } = useProductsStore()
+    const {count, decrement, increment} = useCount(1, detailsData.quantity)
+
+    const setDataCart = () => {
+        if (findCart(detailsData.id)) {
+            removeCart(detailsData.id);
+            message.error("Удален из корзины");
+        } else {
+            const newData = getProductById(detailsData.id);
+            const quantity = detailsData.quantity;
+            const seller = detailsData.seller;
+            const color = detailsData.color;
+            const material = detailsData.material;
+            if (newData){
+                const cartProduct: TCartProduct =  {
+                    ...newData, 
+                    seller,
+                    color,
+                    material,
+                    count, 
+                    quantity
+                }
+                setCart(cartProduct);
+                message.success("Успешно");
+            } else {
+                message.error("Ошибка");
+            }
+        }
+    }
+
+    const quantityStatus = detailsData.quantity > 10 ? "more" : "less"
+    const quantityCount = detailsData.quantity > 10 ? "quantityMore" : "quantityLess"
 
     return (
         <div className="details-info">
             <h1 className="info-title">
-                {titleTranslate(detailsData.name, lang)}
+                {nameTranslate(detailsData.name)}
             </h1>
             <div className="info-subtitle">
                 <ProductView 
@@ -28,7 +61,7 @@ const DetailsInfo: React.FC<DetailsInfoProps> = ({ detailsData }) => {
                 <div className="info-seller">
                     <span>{t("seller")}: {detailsData.seller.company_name}</span>
                 </div>
-                <ProductLike id={detailsData.id}/>
+                <ProductLike data={detailsData}/>
             </div>
             <div className="info-views">
                 <h2 className="views-title">{t("views")}</h2>
@@ -57,34 +90,32 @@ const DetailsInfo: React.FC<DetailsInfoProps> = ({ detailsData }) => {
             </div>
             <div className="info-count">
                 <h2 className="count-title">{t("count")}</h2>
-                <ButtonCount size="large" />
+                <div className="count-block">
+                    <ButtonCount 
+                    size="large" 
+                    count={count}
+                    decrement={decrement}
+                    increment={increment}
+                    />
+                    <span className={`quantity ${quantityStatus}`}>{t(quantityCount)}{detailsData.quantity}</span>
+                </div>
             </div>
             <div className="info-price">
-                <span>
-                    {`${detailsData.price * 1.8} ${t("currency")}`}
-                </span>
-                {`${detailsData?.price} ${t("currency")}`}
+                <div className="price-cash">
+                    <span className="cash-price">
+                        {`${priceFormatter(detailsData.price * 1.8)} ${t("currency")}`}
+                    </span>
+                    <span className="cash-title">
+                        {t("cash")}
+                    </span>
+                </div>
+                {`${priceFormatter(detailsData?.price * count)} ${t("currency")}`}
             </div>
             
 
             <div className="info-add-cart">
-                <button className="fill">{t("addToCart")}</button>
+                <button className="fill" onClick={setDataCart}>{t("addToCart")}</button>
                 <button className="stroke">{t("buy")}</button>
-            </div>
-            
-            <div className="info-desc">
-                <h2 className="desc-title">Кратко о товаре: </h2>
-                <ul>
-                    <li>
-                        {detailsData.description.ru}
-                    </li>
-                    <li>
-                        {detailsData.description.kiril}
-                    </li>
-                    <li>
-                        {detailsData.description.latin}
-                    </li>
-                </ul>
             </div>
         </div>
     );

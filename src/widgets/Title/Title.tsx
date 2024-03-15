@@ -2,24 +2,46 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { IoIosArrowForward } from "react-icons/io";
-import "./title.scss"
+import "./title.scss";
 import { useTranslation } from "react-i18next";
 
 interface TitleProps {
-    title: string;
-    subTitle?: string;
+    title: {
+        name: string;
+        link: string;
+    };
+    subTitle?: {
+        name: string;
+        link: string;
+    };
+    subSubTitle?: {
+        name: string;
+        link: string;
+    } | undefined;
 }
 
-const Title: React.FC<TitleProps> = ({ title, subTitle }) => {
-    const { t } = useTranslation()
+const Title: React.FC<TitleProps> = ({ title, subTitle, subSubTitle }) => {
+    const { t } = useTranslation();
 
     return (
         <h1 className="head-title">
-            <Link to="/" className="link">
-                <span>{ t(title) }</span>
+            <div className="title-inner">
+                <Link to={`${title.link}`} className="link">
+                    <span>{t(title.name)}</span>
+                </Link>
                 <IoIosArrowForward className="icon" />
-                {subTitle && <span>{t(subTitle)}</span>}
-            </Link>
+                {subTitle && (
+                    <Link to={`${subTitle.link}`} className="link">
+                        <span>{t(subTitle.name)}</span>
+                    </Link>
+                )}
+                {subSubTitle && <>
+                    <IoIosArrowForward className="icon sub-sub-title" />
+                    <Link to={`${subSubTitle.link}`} className="link sub-sub-title">
+                        <span>{t(subSubTitle.name)}</span>
+                    </Link>
+                </>}
+            </div>
         </h1>
     );
 };

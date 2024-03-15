@@ -1,48 +1,52 @@
 import React from "react";
-import { OrderCard, Title } from "@/widgets";
-import { User } from "@/assets";
-import "./sectionProfile.scss"
+import ProfileOrders from "./ProfileOrders/ProfileOrders";
+import ProfileSettings from "./ProfileSettings/ProfileSettings";
+import ProfileUser from "./ProfileUser/ProfileUser";
+import { useGetMeQuery } from "@/services";
+import { Title } from "@/widgets";
+import "./sectionProfile.scss";
 
-const SectionProfile: React.FC = () => {
+interface SectionProfileProps {
+    link: string;
+}
+
+const SectionProfile: React.FC<SectionProfileProps> = ({ link }) => {
+    const { data, isPending } = useGetMeQuery()
+    
+    const title = {
+        name: "home",
+        link: "/",
+    };
+
+    const subTitle = {
+        name: isPending? "loading" : "profile",
+        link: "/profile",
+    };
+
+    const subSubTitle = {
+        name: isPending? "loading" : link,
+        link: `/profile/${link}`,
+    };
+
+    
     return (
         <section className="section-profile">
             <div className="container">
                 <div className="profile-inner">
-                    <Title title="Home" subTitle="Profile"/>
+                    <Title
+                        title={title}
+                        subTitle={subTitle}
+                        subSubTitle={link ? subSubTitle : undefined}
+                    />
                     <div className="profile-block">
-                        <div className="profile-orders">
-                            <OrderCard />
+                        <div className="profile-head">
+                            <ProfileUser link={link} data={data?.data}/>
                         </div>
-                        <div className="profile-user">
-                            <div className="user-image">
-                                <div className="image-inner">
-                                    <img src={ User } alt="user" />
-                                </div>
-                            </div>
-                            <h1 className="user-fullname">
-                                Palenshe Tolenshiev
-                            </h1>
-                            <div className="profile-menu">
-                                <button className="menu-item">
-                                    <span>Language</span>
-                                </button>
-                                <button className="menu-item">
-                                    <span>Address</span>
-                                </button>
-                                <button className="menu-item">
-                                    <span>Notifications</span>
-                                </button>
-                                <button className="menu-item">
-                                    <span>Language</span>
-                                </button>
-                                <button className="menu-item">
-                                    <span>Address</span>
-                                </button>
-                                <button className="menu-item">
-                                    <span>Notifications</span>
-                                </button>
-                            </div>
-                    </div>
+                        {link === "orders" && <ProfileOrders />}
+                        {link === "settings" && <ProfileSettings data={data?.data} isPending={isPending}/>}
+                        <div className="profile-foot">
+                            <ProfileUser link={link} data={data?.data}/>
+                        </div>
                     </div>
                 </div>
             </div>

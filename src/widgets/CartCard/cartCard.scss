@@ -1,12 +1,27 @@
 .cart-card
 {
     display: flex;
+    justify-content: space-between;
     border: 1px solid var(--clr-gray-2-5);
     border-radius: 10px;
     overflow: hidden;
-    width: 100%;
     // max-width: 870px;
-    min-width: 870px;
+    width: 100%;
+    height: 100%;
+    // width: 870px;
+
+    @media screen and (max-width: 480px) {
+        flex-direction: column;
+    }
+
+    &__block
+    {
+        display: flex;
+
+        @media screen and (max-width: 480px) {
+            flex-direction: column;
+        }
+    }
 
     &__img
     {
@@ -14,83 +29,19 @@
         justify-content: center;
         align-items: center;
 
-        max-width: 264px;
+        // height: 250px;
+        max-width: 250px;
+        min-width: 200px;
         border-radius: 10px;
         overflow: hidden;
-    }
 
-    &__info
-    {
-        width: 100%;
-        padding: 10px 15px 10px 25px;
-        display: flex;
-        justify-content: space-between;
-        color: var(--clr-dark-state-gray);
-
-        .info-desc
-        {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            max-width: 234px;
+        @media screen and (max-width: 768px) {
+            height: 250px;
+            width: 350px;
         }
-
-        .info-top
-        {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-
-            h1
-            {
-                font-size: 20px;
-                line-height: 28px;
-                font-weight: normal;
-                
-            }
+        
+        @media screen and (max-width: 480px) {
+            width: 100%;
         }
-
-        .info-bottom
-        {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-
-            span
-            {
-                color: var(--clr-gray-3);
-                font-size: 16px;
-                line-height: 21px;
-            }
-        }
-
-        .info-shop
-        {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: end;
-            padding-right: 8px;
-
-            &__price
-            {
-                display: flex;
-                flex-direction: column;
-                align-items: end;
-                font-size: 20px;
-                line-height: 28px;
-                gap: 5px;
-
-                span
-                {
-                    color: var(--clr-gray-3);
-                    text-decoration: line-through;
-                    font-size: 16px;
-                    line-height: 21px;
-                }
-            }
-        }
-
-
     }
 }

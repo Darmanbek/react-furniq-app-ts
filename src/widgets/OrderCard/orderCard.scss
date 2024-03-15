@@ -1,132 +1,68 @@
 .order-card
 {
     display: flex;
+    flex-direction: column;
     border: 1px solid var(--clr-gray-2-5);
     border-radius: 10px;
+    padding: 15px;
     overflow: hidden;
     width: 100%;
     // max-width: 870px;
-    min-width: 870px;
+    color: var(--clr-dark-state-gray);
 
-    &__img
+
+    &-id
     {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        padding: 15px;
 
-        max-width: 264px;
-        width: 100%;
-        border-radius: 10px;
-        overflow: hidden;
-        background-color: var(--clr-gray-2-5);
+        @media screen and (max-width: 480px) {
+            padding: 0;
+            text-align: center;
+        }
     }
 
-    &__info
+    .order-card__info
     {
-        width: 100%;
-        padding: 10px 15px 10px 25px;
         display: flex;
-        justify-content: space-between;
-        color: var(--clr-dark-state-gray);
+        flex-direction: column;
+        gap: 10px;
 
-        .info-desc
+        .order-block
         {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            max-width: 234px;
-        }
+            display: grid;
+            grid-template-columns: 1fr 1fr;
 
-        .info-top
-        {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-
-            h1
-            {
-                font-size: 20px;
-                line-height: 28px;
-                font-weight: normal;
-                
-            }
-
-            .info-view
-            {
+            @media screen and (max-width: 480px) {
                 display: flex;
                 align-items: center;
-                gap: 8px;
-
-                &__rating
-                {
-                    display: flex;
-                    align-items: center;
-                    gap: 2px;
-
-                    .icon_star
-                    {
-                        font-size: 15px;
-                        color: var(--clr-orange);
-                    }
-
-                    span
-                    {
-                        color: var(--clr-gray-3);
-                        font-size: 15px;
-                        line-height: 21px;
-                    }
-                }
-
-                &__review
-                {
-                    font-size: 15px;
-                    line-height: 21px;
-                    color: var(--clr-gray-3);
-                }
-            }
-        }
-
-        .info-bottom
-        {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-
-            span
-            {
-                color: var(--clr-gray-3);
-                font-size: 16px;
-                line-height: 21px;
-            }
-        }
-
-        .info-shop
-        {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: end;
-            padding-right: 8px;
-
-            &__price
-            {
-                display: flex;
-                flex-direction: column;
-                align-items: end;
-                font-size: 20px;
-                line-height: 28px;
+                justify-content: space-between;
                 gap: 5px;
+            }
 
-                span
+            span:first-child
+            {
+                color: var(--clr-dark-state-gray);
+            }
+            
+            &.status
+            {
+                span:last-child
                 {
-                    color: var(--clr-gray-3);
-                    text-decoration: line-through;
-                    font-size: 16px;
-                    line-height: 21px;
+                    max-width: 200px;
+                    border-radius: 10px;
+                    background-color: rgba(0, 255, 0, 0.5);
+                    padding: 5px 15px;
+                    text-align: center;
                 }
             }
         }
+    }
 
-
+    .order-product
+    {
+       .order-product-title
+       {
+            padding: 15px;
+       }
     }
 }

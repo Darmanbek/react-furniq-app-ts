@@ -15,12 +15,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     return (
         <div className="product-card">
             <div className="product-card__like">
-                <ProductLike id={product.id} />
+                <ProductLike data={product} />
 
             </div>
-            <ProductImage 
-                image={product.image}
-            />
+            <div className="product-card__img">
+                <ProductImage 
+                    image={product.image}
+                />
+            </div>
             <div className="product-card__info">
                 <h2 className="card-title">
                     {product.name.ru}

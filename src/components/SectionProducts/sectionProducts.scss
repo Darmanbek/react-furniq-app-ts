@@ -1,7 +1,7 @@
 .section-products
 {
     padding-bottom: 20px;
-    min-height: 100vh;
+    min-height: 50vh;
 
     .not-found
     {
@@ -17,10 +17,23 @@
         
     .products__centre
     {
-        // py-5 grid gap-x-2 sm:gap-x-5 gap-y-14 grid-cols-2 sm:grid-cols-3 md:grid-cols-4
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 20px;
+
+        @media screen and (max-width: 1024px) {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        @media screen and (max-width: 768px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media screen and (max-width: 480px) {
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
     }
 
     .products__bottom

@@ -1,58 +1,66 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import Cookies from "js-cookie";
 import { CartCard, Title } from "@/widgets";
 import { useCartStore } from "@/store";
+import { priceFormatter, nameTranslate } from "@/hooks";
 import "./sectionCart.scss";
-import { priceFormatter } from "@/hooks";
 
 const SectionCart: React.FC = () => {
     const { cart } = useCartStore();
     const { t } = useTranslation();
 
-    const lang = Cookies.get("lang") || "RU";
+    const title = {
+        name: "home",
+        link: "/"
+    }
 
-    const getTranslate = (title: any) =>
-        lang === "RU" ? title.ru : lang === "QQ" ? title.latin : title.kiril;
+    const subTitle = {
+        name: "cart",
+        link: "/cart"
+    }
 
     return (
         <section className="section-cart">
             <div className="container">
                 <div className="cart-inner">
-                    <Title title="home" subTitle="cart" />
+                    <Title title={title} subTitle={subTitle} />
                     <div className="cart-block">
-                        <div className="cart-list">
-                            {cart.map((item, index) => (
-                                <CartCard key={index} cart={item} />
-                            ))}
-                        </div>
-                        <div className="cart-order">
-                            <h2 className="order-title">{t("yourOrder")}</h2>
-                            <div className="order-count">
-                                <span>{t("products")}</span>
-                            </div>
-                            <ul className="order-list">
-                                {cart.map((item) => (
-                                    <li key={item.id}>
-                                        {getTranslate(item.name)}
-                                    </li>
+                        {cart.length === 0 && <h1 className="not-found">{t("notFound")}</h1>}
+                        { cart.length > 0 && <>
+                            <div className="cart-list">
+                                {cart.map((item, index) => (
+                                    <CartCard key={index} cart={item}/>
                                 ))}
-                            </ul>
-                            <div className="order-total">
-                                <span>{t("totalPrice")}</span>
-                                <span>
-                                    {`${priceFormatter(
-                                        cart.reduce(
-                                            (total, item) => total + item.price,
-                                            0
-                                        )
-                                    )} ${t("currency")}`}
-                                </span>
                             </div>
-                            <button className="order-button">
-                                {t("checkout")}
-                            </button>
-                        </div>
+                            <div className="cart-order">
+                                <h2 className="order-title">{t("yourOrder")}</h2>
+                                <div className="order-count">
+                                    <span>{t("products")}</span>
+                                </div>
+                                <ul className="order-list">
+                                    {cart.map((item) => (
+                                        <li key={item.id}>
+                                            <span>{nameTranslate(item.name)}</span>
+                                            <span>x{item.count}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                                <div className="order-total">
+                                    <span>{t("totalPrice")}</span>
+                                    <span>
+                                        {`${priceFormatter(
+                                            cart.reduce(
+                                                (total, item) => total + (item.price * item.count),
+                                                0
+                                            )
+                                        )} ${t("currency")}`}
+                                    </span>
+                                </div>
+                                <button className="order-button">
+                                    {t("checkout")}
+                                </button>
+                            </div>
+                        </>}
                     </div>
                 </div>
             </div>

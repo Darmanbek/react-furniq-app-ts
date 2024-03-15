@@ -6,6 +6,7 @@ interface IStore {
     wishes: TProduct[];
     setWishes: (product: TProduct) => void;
     removeWishes: (id: number) => void;
+    findWishes: (id: number) => TProduct | undefined;
 }
 
 const useWishesStore = create(
@@ -23,6 +24,15 @@ const useWishesStore = create(
                     (wish) => wish.id !== id
                 );
                 return set({ wishes: removeProduct });
+            },
+            findWishes: (id: number) => {
+                const findWishesProduct = get().wishes.find(
+                    (wish) => id === wish.id
+                );
+                if (findWishesProduct) {
+                    return findWishesProduct;
+                }
+                return;
             },
         }),
         {

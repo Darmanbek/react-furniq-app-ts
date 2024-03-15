@@ -1,5 +1,6 @@
 .form-container
 {
+    margin: 20px auto;
     padding: 20px;
     border-radius: 10px;
     background-color: var(--clr-white);
@@ -7,15 +8,28 @@
     max-width: 384px;
     width: 100%;
 
+    @media screen and (max-width: 480px) {
+        max-width: 350px;
+    }
+
     .form-logo
     {
         display: flex;
         justify-content: center;
         padding: 20px;
 
+        @media screen and (max-width: 480px) {
+            padding: 10px;
+        }
+        
+
         img
         {
-            width: 96px;
+            max-width: 100px;
+            width: 100%;
+            @media screen and (max-width: 480px) {
+                max-width: 70px;
+            }
         }
     }
 

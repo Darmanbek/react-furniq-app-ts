@@ -11,6 +11,9 @@ const useSignOnMutation = () => {
             queryClient.invalidateQueries({ queryKey: ["register"] });
             message.success('Успешно!');
         },
+        onError: () => {
+            message.error('Ошибка!');
+        }
     });
 };
 
