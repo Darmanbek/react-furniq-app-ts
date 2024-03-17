@@ -4,7 +4,7 @@
     flex-direction: column;
     border: 1px solid var(--clr-gray-2-5);
     border-radius: 10px;
-    padding: 15px;
+    // padding: 15px;
     overflow: hidden;
     width: 100%;
     // max-width: 870px;
@@ -16,7 +16,7 @@
         padding: 15px;
 
         @media screen and (max-width: 480px) {
-            padding: 0;
+            padding: 15px 0;
             text-align: center;
         }
     }
@@ -25,7 +25,12 @@
     {
         display: flex;
         flex-direction: column;
+        padding: 0 30px;
         gap: 10px;
+
+        @media screen and (max-width: 480px) {
+            padding: 0 15px;
+        }
 
         .order-block
         {
@@ -37,6 +42,22 @@
                 align-items: center;
                 justify-content: space-between;
                 gap: 5px;
+            }
+
+            span
+            {
+                font-size: 16px;
+                line-height: 24px;
+                
+                @media screen and (max-width: 768px) {
+                    font-size: 14px;
+                    line-height: 20px;
+                }
+
+                @media screen and (max-width: 480px) {
+                    font-size: 12px;
+                    line-height: 16px;
+                }
             }
 
             span:first-child
@@ -58,11 +79,52 @@
         }
     }
 
-    .order-product
+    .order-products
     {
-       .order-product-title
-       {
+        &-button
+        {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
             padding: 15px;
-       }
+            
+            .arrow-icon,
+            h3
+            {
+                color: var(--clr-dark-state-gray);
+                font-size: 18px;
+                line-height: 24px;
+            }
+
+            .arrow-icon
+            {
+                font-size: 20px;
+                line-height: 24px;
+                transition: transform 150ms linear;
+
+                &.active
+                {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+
+        &-content
+        {
+            display: grid;
+            grid-template-rows: 0fr;
+            overflow: hidden;
+            transition: grid-template-rows 150ms linear;
+
+            &.open
+            {
+                grid-template-rows: 1fr;
+            }
+
+            .order-products-list
+            {
+                min-height: 0;
+            }
+        }
     }
 }

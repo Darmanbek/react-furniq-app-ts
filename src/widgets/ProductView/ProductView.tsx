@@ -15,7 +15,7 @@ const ProductView: React.FC<ProductViewProps> = ({ rating, reviews_count }) => {
         <div className="product-view">
             <div className="product-view__rating">
                 <IoMdStar className="icon_star" />
-                <span>{rating}</span>
+                <span className="view-count">{rating}</span>
             </div>
             <span className="product-view__review">
                 {`(${reviews_count} ${t("review")})`}

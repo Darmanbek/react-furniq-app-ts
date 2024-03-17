@@ -77,3 +77,31 @@ export type TLoginMe = {
     phone: string;
     role: string;
 }
+
+export interface TUser {
+    id: number
+    name: string
+}
+
+export type TPagination = {
+    total: number
+}
+
+export type TReviewData = {
+    id: number;
+    user: TUser;
+    rating: number;
+    price: number;
+    body: string;
+    created_at: string;
+    updated_at: string;
+    seller: TSeller;
+    seller_answer: any
+    answered_at: string
+}
+
+export type TReview = {
+    data: TReviewData[]
+    pagination: TPagination
+}
+

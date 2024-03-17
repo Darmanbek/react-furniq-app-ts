@@ -14,7 +14,7 @@ const SkeletonDetailsDesc: React.FC = () => {
             </nav>
             <div className="desc-block">
                 <Skeleton 
-                paragraph={{rows: 20}}
+                paragraph={{rows: 10}}
                 active
                 className="skeleton"
                 />

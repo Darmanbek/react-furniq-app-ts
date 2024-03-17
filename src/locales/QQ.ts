@@ -20,8 +20,10 @@ export const QQ = {
         SignInSellers: "Satiwshilar bolimine kiriw",
         popular: "Trendegiler",
         review: "pikir",
+        reviews: "Pikirler",
         currency: "sum",
         currencyUnit: "sum / dana",
+        unit: "dana",
         showMore: "Hammesin koriw",
         installments: "Bolip beriwge",
         urazaAit: "Xayitlik",
@@ -64,6 +66,8 @@ export const QQ = {
         buy: "Satip aliw",
         count: "Mugdari: ",
         views: "Turleri: ",
+        quantityMore: "Ameldegi",
+        quantityLess: "Qalgan",
         cash: "Aksiya",
         delete: "Oshiriw",
         orders: "Buyirtpalarim",
@@ -71,6 +75,9 @@ export const QQ = {
         logout: "Shigiw",
         loginIsDefined: "Eger login bar bolsa?",
         login: "Kiriw",
-        save: "Saqlaw"
+        save: "Saqlaw",
+        price: "Bahasi",
+        linkToProduct: "Onimge otiw",
+        description: "Onim xarakteristikasi"
     },
 };

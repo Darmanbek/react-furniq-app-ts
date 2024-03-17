@@ -1,6 +1,6 @@
 import api from "@/api";
 import { TResponse } from "@/services/index.types";
-import { TImages, TProduct } from "@/models";
+import { TImages, TProduct, TReviewData } from "@/models";
 import { TProductDetails } from "./products.types";
 
 const axiosGetProducts = async (): Promise<TResponse<TProduct>> => {
@@ -20,4 +20,11 @@ const axiosGetProductImage = async (
     return response.data;
 };
 
-export { axiosGetProductById, axiosGetProductImage, axiosGetProducts };
+const axiosGetProductReviews = async (
+    id: number
+): Promise<TResponse<TReviewData>> => {
+    const response = await api.get(`products/${id}/reviews`);
+    return response.data;
+};
+
+export { axiosGetProductById, axiosGetProductImage, axiosGetProducts, axiosGetProductReviews };

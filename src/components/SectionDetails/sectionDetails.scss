@@ -4,12 +4,16 @@
 
     .details-inner
     {
-        
         .details-head
         {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            padding-top: 15px;
+            display: flex;
             gap: 15px;
+
+            @media screen and (max-width: 768px) {
+                flex-direction: column;
+                gap: 15px;
+            }
         }
     }
 }

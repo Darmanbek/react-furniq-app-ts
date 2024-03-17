@@ -20,13 +20,27 @@
 
         .submit-skeleton
         {
+            padding: 15px;
             width: 200px;
+
+            @media screen and (max-width: 480px){
+                width: 100%;
+            }
         }
 
         .form-item-submit
         {
             display: flex;
             justify-content: end;
+
+            @media screen and (max-width: 480px){
+                display: block;
+
+                .button-submit
+                {
+                    width: 100%;
+                }
+            }
         }
     }
 }

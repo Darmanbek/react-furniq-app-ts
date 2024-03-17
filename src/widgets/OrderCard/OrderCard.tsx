@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { IoIosArrowDown } from "react-icons/io";
 import { nameTranslate, priceFormatter } from "@/hooks";
 import { order } from "./order";
+import OrderCardProduct from "./OrderCardProduct/OrderCardProduct";
 import "./orderCard.scss"
 
 const OrderCard: React.FC = () => {
     const { t } = useTranslation()
+    const [open, setOpen] = useState(false)
+
+    const handleOpen = () => {
+        setOpen(prev => !prev)
+    }
 
     return (
         <div className="order-card">
@@ -36,11 +43,18 @@ const OrderCard: React.FC = () => {
                     <span>{nameTranslate(order.payment_type.name)}</span>
                 </div>
             </div>
-            <div className="order-product">
-                <h3 className="order-product-title">Продукты {order.products.length}:</h3>
-                {/* {order.products.map(product => (
-                    <OrderCardProduct product={product} key={product.id}/>
-                ))} */}
+            <div className="order-products">
+                <button className="order-products-button" onClick={handleOpen}>
+                <h3 className="order-products-title">Продуктов {order.products.length}:</h3>
+                <IoIosArrowDown className={`arrow-icon ${open ? "active" : ""}`}/>
+                </button>
+                <div className={`order-products-content ${open ? "open" : ""}`}>
+                    <div className="order-products-list">
+                        {order.products.map(product => (
+                            <OrderCardProduct product={product} key={product.id}/>
+                        ))}
+                    </div>
+                </div>
             </div>
         </div>
     );

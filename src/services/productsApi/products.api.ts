@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import {
     axiosGetProductById,
     axiosGetProductImage,
+    axiosGetProductReviews,
     axiosGetProducts,
 } from "./products.services";
 
@@ -24,4 +25,10 @@ const useGetProductImageQuery = (id: number) =>
         queryKey: ["image", id],
     });
 
-export { useGetProductByIdQuery, useGetProductImageQuery, useGetProductsQuery };
+const useGetProductReviewQuery = (id: number) =>
+    useQuery({
+        queryFn: () => axiosGetProductReviews(id),
+        queryKey: ["image", id],
+    });
+
+export { useGetProductByIdQuery, useGetProductImageQuery, useGetProductsQuery, useGetProductReviewQuery };

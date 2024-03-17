@@ -6,7 +6,7 @@ import { TCartProduct } from "@/models";
 import "./cardInfo.scss";
 
 interface CardInfoProps {
-    cart: TCartProduct
+    cart: TCartProduct;
 }
 
 const CardInfo: React.FC<CardInfoProps> = ({ cart }) => {
@@ -24,21 +24,28 @@ const CardInfo: React.FC<CardInfoProps> = ({ cart }) => {
                 </div>
                 <div className="info-bottom">
                     <div className="info-block">
-                        <span className="info-title">{t("seller")}:</span>
-                        <span className="info-name">
-                            {cart.seller.company_name}
+                        <span className="info-title">
+                            {`${t("seller")}: `}
+                            <span className="info-name">
+                                {cart.seller.company_name}
+                            </span>
                         </span>
                     </div>
                     <div className="info-block">
-                        <span className="info-title">{t("color")}:</span>
-                        <span className="info-name">
-                            {nameTranslate(cart.color.name)}
+                        
+                        <span className="info-title">
+                            {`${t("color")}: `}
+                            <span className="info-name">
+                                {nameTranslate(cart.color.name)}
+                            </span>
                         </span>
                     </div>
                     <div className="info-block">
-                        <span className="info-title">{t("material")}:</span>
-                        <span className="info-name">
-                            {nameTranslate(cart.material.name)}
+                        <span className="info-title">
+                            {`${t("material")}: `}
+                            <span className="info-name">
+                                {nameTranslate(cart.material.name)}
+                            </span>
                         </span>
                     </div>
                 </div>

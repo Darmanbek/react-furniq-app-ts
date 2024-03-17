@@ -20,6 +20,9 @@
     button,
     span
     {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         color: var(--clr-dark-state-gray);
         padding: 5px;
         text-align: center;
@@ -30,39 +33,23 @@
 
     button
     {
+        
         font-size: 21px;
         line-height: 28px;
         padding: 5px 20px;
 
         @media screen and (max-width: 480px) {
-            padding: 5px 0;
+            padding: 10px 5px;
         }
 
-        &:active
+        &.enabled:active
         {
             filter: brightness(0.5);
         }
-    }
 
-    &.large
-    {
-        width: 300px;
-        padding: 5px 10px;
-
-        button,
-        span
+        &.disabled
         {
-            text-align: center;
-            color: var(--clr-dark-state-gray);
-            font-size: 28px;
-            line-height: 40px;
-            width: 100%;
-        }
-
-        button
-        {
-            font-size: 40px;
-            list-style: 48px;
+            opacity: 0.7;
         }
     }
 }

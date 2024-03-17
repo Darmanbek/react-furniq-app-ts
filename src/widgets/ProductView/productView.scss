@@ -12,22 +12,44 @@
 
         .icon_star
         {
-            font-size: 15px;
+            font-size: 16px;
+            line-height: 24px;
             color: var(--clr-orange);
         }
 
-        span
+        .view-count
         {
             color: var(--clr-gray-3);
-            font-size: 15px;
-            line-height: 21px;
+
+            font-size: 16px;
+            line-height: 24px;
+                
+            @media screen and (max-width: 768px) {
+                font-size: 14px;
+                line-height: 20px;
+            }
+
+            @media screen and (max-width: 480px) {
+                font-size: 12px;
+                line-height: 16px;
+            }
         }
     }
 
     &__review
     {
-        font-size: 15px;
-        line-height: 21px;
         color: var(--clr-gray-3);
+        font-size: 16px;
+        line-height: 24px;
+            
+        @media screen and (max-width: 768px) {
+            font-size: 14px;
+            line-height: 20px;
+        }
+
+        @media screen and (max-width: 480px) {
+            font-size: 12px;
+            line-height: 16px;
+        }
     }
 }

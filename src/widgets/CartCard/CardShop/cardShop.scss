@@ -7,7 +7,7 @@
     align-items: end;
     padding-right: 8px;
 
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: 600px) {
         width: 100%;
         flex-direction: row;
         align-items: center;
@@ -18,7 +18,7 @@
     {
         display: none;
 
-        @media screen and (max-width: 480px) {
+        @media screen and (max-width: 600px) {
             display: flex;
             flex-direction: column;
             align-items: end;
@@ -47,7 +47,7 @@
         color: var(--clr-dark-state-gray);
         transition: transform 150ms;
 
-        @media screen and (max-width: 480px) {
+        @media screen and (max-width: 600px) {
             display: none;
         }
         
@@ -78,7 +78,7 @@
         line-height: 28px;
         gap: 5px;
         
-        @media screen and (max-width: 480px) {
+        @media screen and (max-width: 600px) {
             font-size: 18px;
             line-height: 23px;
             display: none;

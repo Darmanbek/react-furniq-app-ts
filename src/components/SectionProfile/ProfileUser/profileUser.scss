@@ -17,30 +17,12 @@
                 justify-content: space-between;
             }
 
-            @media screen and (max-width: 480px) {
+            @media screen and (max-width: 565px) {
                 max-width: 100%;
                 width: 100%;
                 flex-direction: column;
                 justify-content: space-between;
             }
-
-            // .user-image
-            // {
-            //     display: flex;
-            //     justify-content: center;
-            //     align-items: center;
-
-            //     .image-inner
-            //     {
-            //         border-radius: 50%;
-            //         width: 60px;
-            //         height: 60px;
-            //         display: flex;
-            //         justify-content: center;
-            //         align-items: center;
-            //         overflow: hidden;
-            //     }
-            // }
 
             .user-fullname
             {
@@ -86,7 +68,7 @@
                     padding: 8px 0;
                     transition: background 150ms;
 
-                    @media screen and (max-width: 480px) {
+                    @media screen and (max-width: 565px) {
                         max-width: 100%;
                         width: 100%;
                     }
@@ -108,10 +90,15 @@
                     span
                     {
                         font-size: 14px;
-                        line-height: 18px;
+                        line-height: 20px;
                         width: 100%;
                         text-align: center;
                         color: var(--clr-dark-state-gray);
+
+                        @media screen and (max-width: 480px) {
+                            font-size: 12px;
+                            line-height: 16px;
+                        }
                     }
                 }
             }
@@ -136,9 +123,14 @@
                 {
                     color: var(--clr-dark-state-gray);
                     font-size: 14px;
-                    line-height: 18px;
+                    line-height: 20px;
                     width: 100%;
                     text-align: center;
+
+                    @media screen and (max-width: 480px) {
+                        font-size: 12px;
+                        line-height: 16px;
+                    }
                 }
             }
         }

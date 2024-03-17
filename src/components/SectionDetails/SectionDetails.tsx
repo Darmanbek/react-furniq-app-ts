@@ -8,7 +8,9 @@ import {
     SkeletonDetailsDesc,
     SkeletonDetailsImages,
     SkeletonDetailsInfo,
+    Title,
 } from "@/widgets";
+import { nameTranslate } from "@/hooks";
 
 interface SectionDetailsProps {
     detailsData?: TProductDetailsData;
@@ -21,10 +23,21 @@ const SectionDetails: React.FC<SectionDetailsProps> = ({
     detailsImages,
     isPending,
 }) => {
+    const title = {
+        name: "category",
+        link: "/"
+    }
+
+    const subTitle = {
+        name: isPending ? "loading" : detailsData ? nameTranslate(detailsData.category.name) : "notFound",
+        link: detailsData ? `/category/${detailsData.category.id}` : "/"
+    }
+
     return (
         <section className="section-details">
             <div className="container">
                 <div className="details-inner">
+                    <Title title={title} subTitle={subTitle}/>
                     <div className="details-head">
                         {isPending && <SkeletonDetailsImages />}
                         {detailsImages && (

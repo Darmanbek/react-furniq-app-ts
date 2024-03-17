@@ -57,7 +57,7 @@
             text-align: center;
             width: 100%;
             border-radius: 10px;
-            transition: background 150ms;
+            transition: background 150ms linear;
 
             &:hover
             {

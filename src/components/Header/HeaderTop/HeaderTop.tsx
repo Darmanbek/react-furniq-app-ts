@@ -1,7 +1,7 @@
 import React from "react";
 import { Select } from "antd";
-import { IoLocationOutline } from "react-icons/io5";
 import Cookies from "js-cookie";
+import { IoLocationOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useAuthPersistStore } from "@/store";

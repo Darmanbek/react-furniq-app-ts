@@ -5,7 +5,7 @@ import "./profileOrders.scss"
 const ProfileOrders: React.FC = () => {
     return (
         <div className="profile-orders">
-            {/* <OrderCard /> */}
+            <OrderCard />
         </div>
     );
 };

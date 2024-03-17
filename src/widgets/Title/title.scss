@@ -1,14 +1,19 @@
 .head-title
 {
     font-size: 30px;
-    line-height: 42px;
+    line-height: 36px;
     font-weight: bold;
     color: var(--clr-dark-state-gray);
     height: 100%;
 
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: 786px) {
         font-size: 24px;
-        line-height: 31px;
+        line-height: 32px;
+    }
+
+    @media screen and (max-width: 480px) {
+        font-size: 20px;
+        line-height: 28px;
     }
     
     .title-inner

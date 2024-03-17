@@ -5,6 +5,7 @@
     @media screen and (max-width: 768px) {
         display: block;
     }
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.25);
     background-color: var(--clr-white);
     position: fixed;
     
@@ -13,7 +14,7 @@
     right: 0;
     width: 100vw;
     z-index: 50;
-    border-bottom: 2px solid var(--clr-gray-2-5);
+    // border-top: 2px solid var(--clr-gray-2-5);
 
     .aside-nav
     {
@@ -54,12 +55,12 @@
             {
                 text-transform: capitalize;
                 font-size: 14px;
-                line-height: 18px;
+                line-height: 20px;
                 text-wrap: wrap;
 
                 @media screen and (max-width: 480px) {
-                    font-size: 10px;
-                    line-height: 14px;
+                    font-size: 12px;
+                    line-height: 16px;
                 }
             }
 

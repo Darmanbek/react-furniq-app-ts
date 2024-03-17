@@ -48,6 +48,7 @@ const CardShop: React.FC<CardShopProps> = ({ cart }) => {
                 </span>
                 <ButtonCount
                     count={count}
+                    quantity={cart.quantity}
                     decrement={decrement}
                     increment={increment}
                 />

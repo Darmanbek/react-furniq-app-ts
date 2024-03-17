@@ -33,10 +33,15 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 />
                 <div className="card-shop">
                     <div className="card-shop__price">
-                        <span>
-                            {`${priceFormatter(product.price * 1.8)} ${t("currency")}`} 
-                        </span>
-                        {`${priceFormatter(product.price)} ${t("currency")}`}
+                        {product.discount_price ? <>
+                            <span>
+                                {`${priceFormatter(product.price)} ${t("currency")}`} 
+                            </span>
+                            {`${priceFormatter(product.discount_price)} ${t("currency")}`}
+                        </> : <>
+                            {`${priceFormatter(product.price)} ${t("currency")}`}
+                        </>
+                        }
                     </div>
                     <ProductShopping data={product} />
                 </div>

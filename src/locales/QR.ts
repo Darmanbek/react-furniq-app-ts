@@ -20,8 +20,10 @@ export const QR = {
         SignInSellers: "Сатыушылар болимине кириу",
         popular: "Трендегилер",
         review: "Пикир",
+        reviews: "Пикирлер",
         currency: "сум",
         currencyUnit: "сум / дана",
+        unit: "дана",
         showMore: "Хаммесин кориу",
         installments: "Болип бериуге",
         urazaAit: "Хайтлык",
@@ -64,6 +66,8 @@ export const QR = {
         buy: "Сатып алыу",
         count: "Мугдары: ",
         views: "Түрлери: ",
+        quantityMore: "Aмелдеги",
+        quantityLess: "Калган",
         cash: "Акция",
         delete: "Ошириу",
         orders: "Буйыртпаларим",
@@ -71,6 +75,9 @@ export const QR = {
         logout: "Шыгыў",
         loginIsDefined: "Егер логин бар болса?",
         login: "Кириў",
-        save: "Саклау"
+        save: "Саклау",
+        price: "Баxасы",
+        linkToProduct: "Онимге отиу",
+        description: "Оним характеристикасы"
     },
 };
