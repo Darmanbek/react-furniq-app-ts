@@ -14,7 +14,7 @@ const CartCard: React.FC<CartCardProps> = ({ cart }) => {
         <div className="cart-card">
             <div className="cart-card__block">
                 <div className="cart-card__img">
-                    {cart && <ProductImage image={cart.image} />}
+                    <ProductImage image={cart.image}/>
                 </div>
                 <CardInfo cart={cart}/>
             </div>

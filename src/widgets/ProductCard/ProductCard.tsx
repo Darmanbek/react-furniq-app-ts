@@ -24,13 +24,15 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 />
             </div>
             <div className="product-card__info">
-                <h2 className="card-title">
-                    {product.name.ru}
-                </h2>
-                <ProductView 
-                rating={product.rating}
-                reviews_count={product.reviews_count}
-                />
+                <div className="card-top">
+                    <h2 className="card-title">
+                        {product.name.ru}
+                    </h2>
+                    <ProductView 
+                    rating={product.rating}
+                    reviews_count={product.reviews_count}
+                    />
+                </div>
                 <div className="card-shop">
                     <div className="card-shop__price">
                         {product.discount_price ? <>

@@ -78,6 +78,7 @@ export const QQ = {
         save: "Saqlaw",
         price: "Bahasi",
         linkToProduct: "Onimge otiw",
-        description: "Onim xarakteristikasi"
+        description: "Onim xarakteristikasi",
+        createOrder: "Pikir qaldiriw",
     },
 };

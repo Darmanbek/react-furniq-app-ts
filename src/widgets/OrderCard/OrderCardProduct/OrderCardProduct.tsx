@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Product } from "../order";
 import { useTranslation } from "react-i18next";
 import ProductImage from "@/widgets/ProductImage/ProductImage";
-import "./orderCardProduct.scss";
-import { Link } from "react-router-dom";
 import { priceFormatter } from "@/hooks";
+import "./orderCardProduct.scss";
+import { Modal } from "antd";
 
 interface orderCardProductProps {
     product: Product
@@ -12,6 +12,11 @@ interface orderCardProductProps {
 
 const OrderCardProduct: React.FC<orderCardProductProps> = ({ product }) => {
     const { t } = useTranslation()
+    const [modal, setModal] = useState(false)
+
+    const handleOpen = () => {
+        setModal(prev =>!prev)
+    }
 
     return (
         <div className="order-card-product">
@@ -47,9 +52,17 @@ const OrderCardProduct: React.FC<orderCardProductProps> = ({ product }) => {
                         <span className="title">{priceFormatter(product.price)}</span>
                     </span>
                 </div>
-                <Link className="link" to={`/details/${product.id}`}>
-                    {t("linkToProduct")}
-                </Link>
+                <button onClick={handleOpen} className="create-order">
+                    {t("createOrder")}
+                </button>
+                <Modal 
+                centered
+                closable={false}
+                onCancel={handleOpen}
+                open={modal}
+                >
+                    
+                </Modal>
             </div>
         </div>
     );

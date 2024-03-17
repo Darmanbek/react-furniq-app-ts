@@ -36,6 +36,7 @@ const SectionCart: React.FC = () => {
                                 <h2 className="order-title">{t("yourOrder")}</h2>
                                 <div className="order-count">
                                     <span>{t("products")}</span>
+                                    <span>{cart.length}</span>
                                 </div>
                                 <ul className="order-list">
                                     {cart.map((item) => (
@@ -50,7 +51,7 @@ const SectionCart: React.FC = () => {
                                     <span>
                                         {`${priceFormatter(
                                             cart.reduce(
-                                                (total, item) => total + (item.price * item.count),
+                                                (total, item) => total + ((item.discount_price ? item.discount_price : item.price) * item.count),
                                                 0
                                             )
                                         )} ${t("currency")}`}

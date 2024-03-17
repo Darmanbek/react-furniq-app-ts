@@ -79,6 +79,6 @@ export const RU = {
         price: "Стоимость",
         linkToProduct: "Перейти к товару",
         description: "Описание товара",
-        
+        createOrder: "Оставить отзыв",
     },
 };

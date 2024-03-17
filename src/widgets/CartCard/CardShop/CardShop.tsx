@@ -9,25 +9,25 @@ import { useTranslation } from "react-i18next";
 import "./cardShop.scss";
 
 interface CardShopProps {
-    cart: TCartProduct
+    cart: TCartProduct;
 }
 
 const CardShop: React.FC<CardShopProps> = ({ cart }) => {
     const { t } = useTranslation();
-    const { removeCart, updateCart } = useCartStore()
+    const { removeCart, updateCart } = useCartStore();
     const { count, decrement, increment } = useCount(cart.count, cart.quantity);
-   
+
     const deleteCart = () => {
-        removeCart(cart.id)
+        removeCart(cart.id);
         message.error("Удален из корзины");
-    }
+    };
 
     useEffect(() => {
         updateCart({
             ...cart,
-            count: count
-        })
-    }, [count])
+            count: count,
+        });
+    }, [count]);
     return (
         <div className="cart-card__info-shop">
             <button className="info-shop__delete" onClick={deleteCart}>
@@ -35,10 +35,22 @@ const CardShop: React.FC<CardShopProps> = ({ cart }) => {
                 <span>{t("delete")}</span>
             </button>
             <div className="info-shop__price">
-                <span>{`${priceFormatter(cart.price * 1.8)} ${t(
-                    "currency"
-                )}`}</span>
-                {`${priceFormatter(cart.price * count)} ${t("currency")}`}
+                {cart.discount_price ? (
+                    <>
+                        <span>{`${priceFormatter(cart.price)} ${t(
+                            "currency"
+                        )}`}</span>
+                        {`${priceFormatter(cart.discount_price * count)} ${t(
+                            "currency"
+                        )}`}
+                    </>
+                ) : (
+                    <>
+                        {`${priceFormatter(cart.price * count)} ${t(
+                            "currency"
+                        )}`}
+                    </>
+                )}
             </div>
             <div className="info-shop__count">
                 <span
@@ -55,10 +67,22 @@ const CardShop: React.FC<CardShopProps> = ({ cart }) => {
             </div>
             <div className="info-shop-hidden">
                 <div className="info-shop__price">
-                    <span>{`${priceFormatter(cart.price * 1.8)} ${t(
-                        "currency"
-                    )}`}</span>
-                    {`${priceFormatter(cart.price * count)} ${t("currency")}`}
+                    {cart.discount_price ? (
+                        <>
+                            <span>{`${priceFormatter(cart.price)} ${t(
+                                "currency"
+                            )}`}</span>
+                            {`${priceFormatter(cart.discount_price * count)} ${t(
+                                "currency"
+                            )}`}
+                        </>
+                    ) : (
+                        <>
+                            {`${priceFormatter(cart.price * count)} ${t(
+                                "currency"
+                            )}`}
+                        </>
+                    )}
                 </div>
                 <button className="info-shop__delete" onClick={deleteCart}>
                     <IoTrash />

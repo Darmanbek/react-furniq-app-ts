@@ -78,6 +78,7 @@ export const QR = {
         save: "Саклау",
         price: "Баxасы",
         linkToProduct: "Онимге отиу",
-        description: "Оним характеристикасы"
+        description: "Оним характеристикасы",
+        createOrder: "Пикир калдырыу",
     },
 };
