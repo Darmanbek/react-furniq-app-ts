@@ -8,6 +8,16 @@ const axiosGetProducts = async (): Promise<TResponse<TProduct>> => {
     return response.data;
 };
 
+const axiosGetPopularProducts = async (): Promise<TResponse<TProduct>> => {
+    const response = await api.get("popular");
+    return response.data;
+};
+
+const axiosGetLatestProducts = async (): Promise<TResponse<TProduct>> => {
+    const response = await api.get("latest");
+    return response.data;
+};
+
 const axiosGetProductById = async (id: number): Promise<TProductDetails> => {
     const response = await api.get(`products/${id}`);
     return response.data;
@@ -27,4 +37,11 @@ const axiosGetProductReviews = async (
     return response.data;
 };
 
-export { axiosGetProductById, axiosGetProductImage, axiosGetProducts, axiosGetProductReviews };
+export {
+    axiosGetProductById,
+    axiosGetProductImage,
+    axiosGetProducts,
+    axiosGetProductReviews,
+    axiosGetPopularProducts,
+    axiosGetLatestProducts,
+};

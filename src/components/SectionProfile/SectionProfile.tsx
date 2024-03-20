@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ProfileOrders from "./ProfileOrders/ProfileOrders";
 import ProfileSettings from "./ProfileSettings/ProfileSettings";
 import ProfileUser from "./ProfileUser/ProfileUser";
@@ -11,8 +11,9 @@ interface SectionProfileProps {
 }
 
 const SectionProfile: React.FC<SectionProfileProps> = ({ link }) => {
-    const { data, isPending } = useGetMeQuery()
-    
+    const meUser = useGetMeQuery()
+    const { data, isPending } = meUser;
+ 
     const title = {
         name: "home",
         link: "/",
@@ -28,7 +29,9 @@ const SectionProfile: React.FC<SectionProfileProps> = ({ link }) => {
         link: `/profile/${link}`,
     };
 
-    
+    useEffect(() => {
+        meUser.refetch()
+    }, [])
     return (
         <section className="section-profile">
             <div className="container">

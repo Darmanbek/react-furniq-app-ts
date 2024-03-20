@@ -1,9 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { MdKeyboardArrowRight } from "react-icons/md";
 import { IoIosArrowForward } from "react-icons/io";
-import "./title.scss";
 import { useTranslation } from "react-i18next";
+import "./title.scss";
 
 interface TitleProps {
     title: {

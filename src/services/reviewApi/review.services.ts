@@ -1,8 +1,7 @@
 import api from "@/api";
-import { TResponse } from "@/services/index.types";
 import { TReview, TReviewChange } from "./review.types";
 
-const axiosGetReviews = async (id: number): Promise<TResponse<TReview>> => {
+const axiosGetReviews = async (id: number): Promise<TReview> => {
     const response = await api.get(`/products/${id}/reviews`);
     return response.data;
 };

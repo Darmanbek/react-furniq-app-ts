@@ -1,33 +1,33 @@
-import React, { useState } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import { IoIosArrowDown } from "react-icons/io";
-import { nameTranslate, priceFormatter } from "@/hooks";
-import { order } from "./order";
+import { nameTranslate, priceFormatter, useOpen } from "@/hooks";
 import OrderCardProduct from "./OrderCardProduct/OrderCardProduct";
-import "./orderCard.scss"
+import { TOrderData } from "@/models";
+import "./orderCard.scss";
 
-const OrderCard: React.FC = () => {
-    const { t } = useTranslation()
-    const [open, setOpen] = useState(false)
+interface OrderCardProps {
+    order: TOrderData;
+}
 
-    const handleOpen = () => {
-        setOpen(prev => !prev)
-    }
+const OrderCard: React.FC<OrderCardProps> = ({ order }) => {
+    const { t } = useTranslation();
+    const { open, handleOpen } = useOpen(false);
 
     return (
         <div className="order-card">
-            <h1 className="order-card-id">ID заказа 10539665</h1>
+            <h1 className="order-card-id">{`${t("orderId")} ${order.id}`}</h1>
             <div className="order-card__info">
                 <div className="order-block status">
-                    <span>Статус:</span>
-                    <span>{nameTranslate(order.status.name)}</span>
+                    <span>{t("status")}:</span>
+                    <span>{t(nameTranslate(order.status.name))}</span>
                 </div>
                 <div className="order-block">
-                    <span>Дата заказа:</span>
+                    <span>{t("orderDate")}:</span>
                     <span>{order.created_at}</span>
                 </div>
                 <div className="order-block">
-                    <span>Дата доставки:</span>
+                    <span>{t("orderUpdate")}:</span>
                     <span>{order.updated_at}</span>
                 </div>
                 <div className="order-block">
@@ -35,23 +35,32 @@ const OrderCard: React.FC = () => {
                     <span>{t("city")}</span>
                 </div>
                 <div className="order-block">
-                    <span>Сумма заказа:</span>
-                    <span>{priceFormatter(order.sum)} {t("currency")}</span>
+                    <span>{t("orderPrice")}:</span>
+                    <span>
+                        {priceFormatter(order.sum)} {t("currency")}
+                    </span>
                 </div>
                 <div className="order-block">
-                    <span>Способ оплаты:</span>
-                    <span>{nameTranslate(order.payment_type.name)}</span>
+                    <span>{t("paymentType")}:</span>
+                    <span>{t(nameTranslate(order.payment_type.name))}</span>
                 </div>
             </div>
             <div className="order-products">
                 <button className="order-products-button" onClick={handleOpen}>
-                <h3 className="order-products-title">Продуктов {order.products.length}:</h3>
-                <IoIosArrowDown className={`arrow-icon ${open ? "active" : ""}`}/>
+                    <h3 className="order-products-title">
+                        {`${t("products2")} ${order.products.length}`}:
+                    </h3>
+                    <IoIosArrowDown
+                        className={`arrow-icon ${open ? "active" : ""}`}
+                    />
                 </button>
                 <div className={`order-products-content ${open ? "open" : ""}`}>
                     <div className="order-products-list">
-                        {order.products.map(product => (
-                            <OrderCardProduct product={product} key={product.id}/>
+                        {order.products.map((product) => (
+                            <OrderCardProduct
+                                product={product}
+                                key={product.id}
+                            />
                         ))}
                     </div>
                 </div>

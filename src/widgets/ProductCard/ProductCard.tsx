@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { ProductImage, ProductLike, ProductShopping, ProductView } from "@/widgets";
 import { TProduct } from "@/models";
 import "./productCard.scss";
-import { priceFormatter } from "@/hooks";
+import { nameTranslate, priceFormatter } from "@/hooks";
 
 interface ProductCardProps {
     product: TProduct
@@ -26,7 +26,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             <div className="product-card__info">
                 <div className="card-top">
                     <h2 className="card-title">
-                        {product.name.ru}
+                        {t(nameTranslate(product.name))}
                     </h2>
                     <ProductView 
                     rating={product.rating}

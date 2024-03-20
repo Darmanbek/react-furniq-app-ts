@@ -7,6 +7,8 @@ const useGetMeQuery = () =>
     useQuery({
         queryFn: fetchGetMe,
         queryKey: ["get-me"],
+        refetchOnMount: true,
+        refetchOnWindowFocus: true,
     });
 
 const useSignInPhoneMutation = () => {

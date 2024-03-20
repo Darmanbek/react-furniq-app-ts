@@ -13,11 +13,15 @@ interface ProfileSettingsProps {
 const ProfileSettings: React.FC<ProfileSettingsProps> = ({ data, isPending }) => {
     const { t } = useTranslation();
 
+    const onFinish = (e: any) => {
+        e.preventDefault();
+    }
+
     return (
         <div className="profile-settings">
             <h1>Мои данные</h1>
             <div className="profile-settings-inner">
-                <form className="profile-form">
+                <form className="profile-form" onSubmit={onFinish}>
                     {isPending && <>
                         <div className="form-skeleton">
                             <Skeleton.Input active size="large" block/>
@@ -56,7 +60,7 @@ const ProfileSettings: React.FC<ProfileSettingsProps> = ({ data, isPending }) =>
                             :
                             (
                                 <button type="submit" className="button-submit">
-                                            <span className="submit-text">{t("save")}</span>
+                                    <span className="submit-text">{t("save")}</span>
                                 </button>
                             )}
                     </div>

@@ -36,7 +36,7 @@ const CardInfo: React.FC<CardInfoProps> = ({ cart }) => {
                         <span className="info-title">
                             {`${t("color")}: `}
                             <span className="info-name">
-                                {nameTranslate(cart.color.name)}
+                                {t(nameTranslate(cart.color.name))}
                             </span>
                         </span>
                     </div>
@@ -44,7 +44,7 @@ const CardInfo: React.FC<CardInfoProps> = ({ cart }) => {
                         <span className="info-title">
                             {`${t("material")}: `}
                             <span className="info-name">
-                                {nameTranslate(cart.material.name)}
+                                {t(nameTranslate(cart.material.name))}
                             </span>
                         </span>
                     </div>

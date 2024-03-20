@@ -13,6 +13,18 @@ const useGetProductsQuery = () =>
         queryKey: ["products"],
     });
 
+const useGetPopularProductsQuery = () =>
+    useQuery({
+        queryFn: axiosGetProducts,
+        queryKey: ["popular"],
+    });
+
+const useGetLatestProductsQuery = () =>
+    useQuery({
+        queryFn: axiosGetProducts,
+        queryKey: ["latest"],
+    });
+
 const useGetProductByIdQuery = (id: number) =>
     useQuery({
         queryFn: () => axiosGetProductById(id),
@@ -31,4 +43,11 @@ const useGetProductReviewQuery = (id: number) =>
         queryKey: ["image", id],
     });
 
-export { useGetProductByIdQuery, useGetProductImageQuery, useGetProductsQuery, useGetProductReviewQuery };
+export {
+    useGetProductByIdQuery,
+    useGetProductImageQuery,
+    useGetProductsQuery,
+    useGetProductReviewQuery,
+    useGetPopularProductsQuery,
+    useGetLatestProductsQuery
+};

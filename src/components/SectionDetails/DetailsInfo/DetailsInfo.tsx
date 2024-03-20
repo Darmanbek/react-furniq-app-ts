@@ -53,7 +53,7 @@ const DetailsInfo: React.FC<DetailsInfoProps> = ({ detailsData }) => {
         <div className="details-info">
             <div className="info-top">
                 <h1 className="info-title">
-                    {nameTranslate(detailsData.name)}
+                    {t(nameTranslate(detailsData.name))}
                 </h1>
                 <div className="info-subtitle">
                     <ProductView
@@ -70,11 +70,11 @@ const DetailsInfo: React.FC<DetailsInfoProps> = ({ detailsData }) => {
             </div>
             <h2 className="info-views-title">
                 {`${t("color")}: `}
-                <span>{nameTranslate(detailsData.color.name)}</span>
+                <span>{t(nameTranslate(detailsData.color.name))}</span>
             </h2>
             <h2 className="info-materials-title">
                 {`${t("material")}: `}
-                <span>{nameTranslate(detailsData.material.name)}</span>
+                <span>{t(nameTranslate(detailsData.material.name))}</span>
             </h2>
             <div className="info-count">
                 <h2 className="count-title">{`${t("count")} :`}</h2>

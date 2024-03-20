@@ -1,4 +1,17 @@
 .profile-orders
 {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .orders-head
+    {
+        width: 100%;
+        border: 1px solid var(--clr-gray-2-5);
+        color: var(--clr-dark-state-gray);
+        padding: 15px;
+        border-radius: 10px;
+        overflow: hidden;
+    }
 }

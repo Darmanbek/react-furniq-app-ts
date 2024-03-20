@@ -8,6 +8,7 @@ interface IUseCartStore {
     removeCart: (id: number) => void;
     findCart: (id: number) => TCartProduct | undefined;
     updateCart: (cartProduct: TCartProduct) => void;
+    cleanCart: () => void;
 }
 
 const useCartStore = create(
@@ -44,6 +45,7 @@ const useCartStore = create(
                 });
                 return set({ cart: newCartProducts });
             },
+            cleanCart: () => set({ cart: [] }),
         }),
         {
             name: "cart",

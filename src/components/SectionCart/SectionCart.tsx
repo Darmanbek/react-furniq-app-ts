@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { CartCard, Title } from "@/widgets";
 import { useCartStore } from "@/store";
 import { priceFormatter, nameTranslate } from "@/hooks";
+import { useNavigate } from "react-router-dom";
+import { Click } from "@/assets";
 import "./sectionCart.scss";
+import { useCreateOrdersMutation } from "@/services";
+import { CircularProgress } from "@mui/material";
 
 const SectionCart: React.FC = () => {
-    const { cart } = useCartStore();
+    const { cart, cleanCart } = useCartStore();
+    const { mutate: createOrders, isSuccess, isPending } = useCreateOrdersMutation()
     const { t } = useTranslation();
+    const navigate = useNavigate();
 
     const title = {
         name: "home",
@@ -19,6 +25,26 @@ const SectionCart: React.FC = () => {
         link: "/cart"
     }
 
+    const clickCheckOut = () => {
+        const orders = {
+            payment_type_id: 2,
+            products: cart.map((product) => {
+                return {
+                    product_id: product.id,
+                    quantity: product.count
+                }
+            })
+        }
+        createOrders(orders)
+        
+        // navigate("https://www.google.com/")
+    }
+
+    useEffect(() => {
+        if (isSuccess) {
+            cleanCart()
+        }
+    }, [isSuccess, createOrders])
     return (
         <section className="section-cart">
             <div className="container">
@@ -57,9 +83,14 @@ const SectionCart: React.FC = () => {
                                         )} ${t("currency")}`}
                                     </span>
                                 </div>
-                                <button className="order-button">
+                                <div className="order-checkout">
+                                    <span>{t("paymentType")}:</span>
+                                    <span><img src={Click} alt="click" /></span>
+                                </div>
+                                <button onClick={clickCheckOut} className="order-button">
                                     {t("checkout")}
                                 </button>
+                                {isPending && <div className="loading"><CircularProgress className="loading-icon"/></div>}
                             </div>
                         </>}
                     </div>

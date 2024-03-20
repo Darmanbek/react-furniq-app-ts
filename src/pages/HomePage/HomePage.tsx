@@ -3,28 +3,29 @@ import {
     SectionBanner,
     SectionProducts
 } from "@/components";
-import { useGetProductsQuery } from "@/services";
+import { useGetLatestProductsQuery, useGetPopularProductsQuery, useGetProductsQuery } from "@/services";
 import { Title } from "@/widgets";
 import { useNavStore } from "@/store";
 
 const HomePage: React.FC = () => {
-    const { data: products, isPending } = useGetProductsQuery();
+    const { data: products, isPending: isProducts } = useGetProductsQuery();
+    const { data: popular, isPending: isPopular } = useGetPopularProductsQuery();
+    const {  data: latest, isPending: isLatest } = useGetLatestProductsQuery();
     const { toPath } = useNavStore()
-    console.log(products);
     
 
     const titlePopular = {
-        name: "popular",
+        name: isPopular ? "loading" : "popular",
         link: "/popular"
     }
 
     const titleUraza = {
-        name: "urazaAit",
+        name: isLatest ? "loading" : "latest",
         link: "/"
     }
 
     const titleInstallments = {
-        name: "installments",
+        name: isProducts ? "loading" : "allProducts",
         link: "/"
     }
 
@@ -34,13 +35,13 @@ const HomePage: React.FC = () => {
     return (
         <>
             <SectionBanner />
-            <SectionProducts products={products?.data} isPending={isPending}>
+            <SectionProducts products={popular?.data} isPending={isPopular}>
                 <Title title={titlePopular}/>
             </SectionProducts>
-            <SectionProducts products={products?.data} isPending={isPending}>
+            <SectionProducts products={latest?.data} isPending={isLatest}>
                 <Title title={titleUraza}/>
             </SectionProducts>
-            <SectionProducts products={products?.data} isPending={isPending}>
+            <SectionProducts products={products?.data} isPending={isProducts}>
                 <Title title={titleInstallments}/>
             </SectionProducts>
         </>

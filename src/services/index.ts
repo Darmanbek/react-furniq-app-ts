@@ -4,4 +4,6 @@ export * from "./productsApi/products.api";
 export * from "./categoryApi/category.api";
 export * from "./categoryProductsApi/categoryProducts.api";
 export * from "./companyApi/company.api";
-export * from "./reviewApi/review.api"
+export * from "./reviewApi/review.api";
+export * from "./ordersApi/orders.api";
+export * from "./paymentApi/payment.api";

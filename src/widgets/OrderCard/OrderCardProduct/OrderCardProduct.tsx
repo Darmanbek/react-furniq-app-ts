@@ -1,27 +1,51 @@
-import React, { useState } from "react";
-import { Product } from "../order";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { IoMdStar } from "react-icons/io";
+import { CiEdit } from "react-icons/ci";
 import ProductImage from "@/widgets/ProductImage/ProductImage";
-import { priceFormatter } from "@/hooks";
+import { priceFormatter, useOpen } from "@/hooks";
+import { ModalRating } from "@/components";
+import { TProductOrder } from "@/models";
+import {
+    useCreateReviewMutation,
+    useGetMeQuery,
+    useGetReviewsQuery,
+} from "@/services";
 import "./orderCardProduct.scss";
-import { Modal } from "antd";
 
 interface orderCardProductProps {
-    product: Product
+    product: TProductOrder;
 }
 
 const OrderCardProduct: React.FC<orderCardProductProps> = ({ product }) => {
-    const { t } = useTranslation()
-    const [modal, setModal] = useState(false)
+    const { t } = useTranslation();
+    const { open, handleOpen } = useOpen(false);
+    const { data: meUser } = useGetMeQuery();
+    const { data: reviews } = useGetReviewsQuery(product.id);
+    const { mutate: createReview } = useCreateReviewMutation(product.id);
 
-    const handleOpen = () => {
-        setModal(prev =>!prev)
-    }
+    const [myRating, setMyRating] = useState<number | undefined>()
 
+    const sendReview = (rating: number, body: string) => {
+        createReview({
+            rating,
+            body,
+        });
+        setMyRating(rating)
+    };
+
+    useEffect(() => {
+        const myReview= reviews?.data.find(
+            (item) => item.user.name === meUser?.data.name
+        );
+        if (myReview) {
+            setMyRating(myReview.rating)
+        }
+    }, [reviews, meUser, createReview])
     return (
         <div className="order-card-product">
             <div className="product-img">
-                <ProductImage image={product.image}/>
+                <ProductImage image={product.image} />
             </div>
             <div className="product-info">
                 <div className="info-item">
@@ -32,7 +56,6 @@ const OrderCardProduct: React.FC<orderCardProductProps> = ({ product }) => {
                         {`${t("color")}: `}
                         <span className="title">{product.color}</span>
                     </span>
-                    
                 </div>
                 <div className="info-item">
                     <span>
@@ -49,20 +72,29 @@ const OrderCardProduct: React.FC<orderCardProductProps> = ({ product }) => {
                 <div className="info-item">
                     <span>
                         {`${t("price")}: `}
-                        <span className="title">{priceFormatter(product.price)}</span>
+                        <span className="title">
+                            {priceFormatter(product.price)}
+                        </span>
                     </span>
                 </div>
-                <button onClick={handleOpen} className="create-order">
-                    {t("createOrder")}
-                </button>
-                <Modal 
-                centered
-                closable={false}
-                onCancel={handleOpen}
-                open={modal}
-                >
-                    
-                </Modal>
+                {myRating ? (
+                    <button className="update-order">
+                        <IoMdStar className="order-icon" />
+                        {myRating}
+                        {/* <CiEdit className="order-icon" /> */}
+                    </button>
+                ) : (
+                    <>
+                        <button onClick={handleOpen} className="create-order">
+                            {t("createOrder")}
+                        </button>
+                    </>
+                )}
+                <ModalRating
+                    modal={open}
+                    handleOpen={handleOpen}
+                    sendReview={sendReview}
+                />
             </div>
         </div>
     );

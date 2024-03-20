@@ -1,5 +1,4 @@
 import React from "react";
-import { BgMain } from "@/assets"
 import "./SectionSign.scss";
 
 interface SectionSignProps {
@@ -8,7 +7,7 @@ interface SectionSignProps {
 
 const SectionSign: React.FC<SectionSignProps> = ({ children }) => {
     return (
-        <section className="section-sign" style={{background: BgMain}}>
+        <section className="section-sign">
             <div className="container">
                 <div className="sign-inner">
                     { children }

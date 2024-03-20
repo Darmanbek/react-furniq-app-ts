@@ -11,35 +11,48 @@ interface DetailsDescProps {
 
 const DetailsDesc: React.FC<DetailsDescProps> = ({ detailsData }) => {
     const { t } = useTranslation();
-    const [select, setSelect] = useState(1)
+    const [select, setSelect] = useState(1);
 
     const isActive = (index: number) => {
         if (index === select) {
-            return "active"
+            return "active";
         }
-        return ""
-    }
+        return "";
+    };
     return (
         <div className="details-desc">
             <nav className="desc-nav">
                 <ul>
                     <li className={isActive(1)}>
-                        <button onClick={() => setSelect(1)}>{t("description")}</button>
+                        <button onClick={() => setSelect(1)}>
+                            {t("description")}
+                        </button>
                     </li>
                     <li className={isActive(2)}>
-                        <button onClick={() => setSelect(2)}>{t("reviews")}</button>
+                        <button onClick={() => setSelect(2)}>
+                            {t("reviews")}
+                        </button>
                     </li>
                 </ul>
             </nav>
-            {
-                select === 1 ? 
+            {select === 1 ? (
                 <div className="desc-block">
-                    <p>
-                        {nameTranslate(detailsData.description)}
-                    </p>
-                </div>:
-                <Reviews id={detailsData.id}/>
-            }
+                    <div className="desc-block-inner">
+                        <p>{t(nameTranslate(detailsData.description))}</p>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur, adipisicing
+                            elit. Dolorum officiis quos laborum, ratione vitae
+                            delectus. Numquam explicabo velit sequi nulla!
+                        </p>
+                    </div>
+                </div>
+            ) : (
+                <div className="desc-block">
+                    <div className="desc-block-inner">
+                        <Reviews id={detailsData.id} />
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

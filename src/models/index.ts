@@ -87,6 +87,7 @@ export type TPagination = {
     total: number
 }
 
+
 export type TReviewData = {
     id: number;
     user: TUser;
@@ -100,8 +101,32 @@ export type TReviewData = {
     answered_at: string
 }
 
-export type TReview = {
-    data: TReviewData[]
-    pagination: TPagination
+export type TOrderProduct = {
+    product_id: number
+    quantity: number
 }
 
+export type TCreateOrders = {
+    payment_type_id: number;
+    products: TOrderProduct[];
+}
+
+export type TProductOrder = {
+    id: number;
+    name: string;
+    price: number;
+    color: string;
+    material: string;
+    quantity: number;
+    image: null | TImages;
+}
+
+export type TOrderData = {
+    id: number;
+    payment_type: TCategory;
+    status: TCategory;
+    sum: number;
+    products: TProductOrder[];
+    created_at: string;
+    updated_at: string;
+}

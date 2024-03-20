@@ -1,5 +1,7 @@
 export { default as Header } from "./Header/Header";
 
+export { ModalRating } from "./Modal";
+
 export { default as SectionBanner } from "./SectionBanner/SectionBanner";
 export { default as SectionProducts } from "./SectionProducts/SectionProducts";
 export { default as SectionDetails } from "./SectionDetails/SectionDetails";
