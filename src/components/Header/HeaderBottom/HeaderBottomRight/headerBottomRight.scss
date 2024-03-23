@@ -24,6 +24,29 @@
             background-color: var(--clr-orange);
             transform: translate(50%, -50%);
         }
+
+        .fill
+        {
+            display: none;
+        }
+
+        .stroke
+        {
+            display: block;
+        }
+
+        &.active
+        {
+            .fill
+            {
+                display: block;
+            }
+
+            .stroke
+            {
+                display: none;
+            }
+        }
     }
 
     .bottom-right__icon

@@ -1,18 +1,19 @@
 import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { CartCard, Title } from "@/widgets";
-import { useCartStore } from "@/store";
+import { useAuthPersistStore, useCartStore } from "@/store";
 import { priceFormatter, nameTranslate } from "@/hooks";
 import { useNavigate } from "react-router-dom";
 import { Click } from "@/assets";
-import "./sectionCart.scss";
 import { useCreateOrdersMutation } from "@/services";
 import { CircularProgress } from "@mui/material";
+import "./sectionCart.scss";
 
 const SectionCart: React.FC = () => {
-    const { cart, cleanCart } = useCartStore();
-    const { mutate: createOrders, isSuccess, isPending } = useCreateOrdersMutation()
     const { t } = useTranslation();
+    const { mutate: createOrders, isSuccess, isPending } = useCreateOrdersMutation()
+    const { cart, cleanCart } = useCartStore();
+    const { token } = useAuthPersistStore();
     const navigate = useNavigate();
 
     const title = {
@@ -26,17 +27,20 @@ const SectionCart: React.FC = () => {
     }
 
     const clickCheckOut = () => {
-        const orders = {
-            payment_type_id: 2,
-            products: cart.map((product) => {
-                return {
-                    product_id: product.id,
-                    quantity: product.count
-                }
-            })
+        if (!token) {
+            navigate("/register");
+        } else {
+            const orders = {
+                payment_type_id: 2,
+                products: cart.map((product) => {
+                    return {
+                        product_id: product.id,
+                        quantity: product.count
+                    }
+                })
+            }
+            createOrders(orders)
         }
-        createOrders(orders)
-        
         // navigate("https://www.google.com/")
     }
 

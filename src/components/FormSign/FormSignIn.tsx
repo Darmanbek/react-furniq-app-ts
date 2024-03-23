@@ -4,8 +4,8 @@ import { FurniqLogo2 as Logo } from "@/assets";
 import { useTranslation } from "react-i18next";
 import { useSignInEmailMutation, useSignInPhoneMutation } from "@/services";
 import { useAuthPersistStore } from "@/store";
-import "./formSign.scss";
 import { ButtonSubmit, InputEmail, InputPassword, InputPhone } from "@/widgets";
+import "./formSign.scss";
 
 const FormSignIn: React.FC = () => {
     const navigate = useNavigate();

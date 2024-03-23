@@ -5,13 +5,11 @@ import {
 } from "@/components";
 import { useGetLatestProductsQuery, useGetPopularProductsQuery, useGetProductsQuery } from "@/services";
 import { Title } from "@/widgets";
-import { useNavStore } from "@/store";
 
 const HomePage: React.FC = () => {
     const { data: products, isPending: isProducts } = useGetProductsQuery();
     const { data: popular, isPending: isPopular } = useGetPopularProductsQuery();
     const {  data: latest, isPending: isLatest } = useGetLatestProductsQuery();
-    const { toPath } = useNavStore()
     
 
     const titlePopular = {
@@ -29,9 +27,6 @@ const HomePage: React.FC = () => {
         link: "/"
     }
 
-    useEffect(() => {
-        toPath("/")
-    }, [])
     return (
         <>
             <SectionBanner />

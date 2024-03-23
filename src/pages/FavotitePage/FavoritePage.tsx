@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
 import { SectionProducts } from "@/components";
-import { useNavStore, useWishesStore } from "@/store";
+import { useWishesStore } from "@/store";
 import { Title } from "@/widgets";
 
 const FavoritePage: React.FC = () => {
     const { wishes } = useWishesStore();
-    const { toPath } = useNavStore()
 
     const title = {
         name: "home",
@@ -17,9 +16,6 @@ const FavoritePage: React.FC = () => {
         link: "/wishes"
     }
 
-    useEffect(() => {
-        toPath("/wishes")
-    }, [])
     return (
         <>
             <SectionProducts products={wishes}>

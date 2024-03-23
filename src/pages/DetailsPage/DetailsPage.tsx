@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import { SectionDetails, SectionProducts } from "@/components";
 import { Title } from "@/widgets";
@@ -7,11 +7,9 @@ import {
     useGetProductImageQuery,
     useGetProductsQuery,
 } from "@/services";
-import { useNavStore } from "@/store";
 
 const DetailsPage: React.FC = () => {
     const { productId } = useParams();
-    const { toPath } = useNavStore()
     const { data: details } = useGetProductByIdQuery(Number(productId));
     const { 
         data: detailsImages, 
@@ -24,9 +22,6 @@ const DetailsPage: React.FC = () => {
         link: "/"
     }
 
-    useEffect(() => {
-        toPath("/details")
-    }, [])
     return (
         <>
             <SectionDetails
