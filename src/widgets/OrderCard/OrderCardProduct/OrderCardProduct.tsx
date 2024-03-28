@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { IoMdStar } from "react-icons/io";
-import { CiEdit } from "react-icons/ci";
 import ProductImage from "@/widgets/ProductImage/ProductImage";
 import { priceFormatter, useOpen } from "@/hooks";
 import { ModalRating } from "@/components";

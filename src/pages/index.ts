@@ -7,3 +7,4 @@ export { default as DetailsPage } from "./DetailsPage/DetailsPage";
 export { default as NotFoundPage } from "./NotFoundPage/NotFoundPage";
 export { default as ProfilePage } from "./ProfilePage/ProfilePage";
 export { default as CategoryPage } from "./CategoryPage/CategoryPage";
+export { default as ProductsPage } from "./CategoryPage/CategoryPage";

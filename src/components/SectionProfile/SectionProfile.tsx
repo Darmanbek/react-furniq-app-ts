@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import ProfileOrders from "./ProfileOrders/ProfileOrders";
 import ProfileSettings from "./ProfileSettings/ProfileSettings";
 import ProfileUser from "./ProfileUser/ProfileUser";
 import { useGetMeQuery } from "@/services";
 import { Title } from "@/widgets";
 import "./sectionProfile.scss";
-import { Route, Routes } from "react-router-dom";
 
 interface SectionProfileProps {
     link: string;

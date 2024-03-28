@@ -1,5 +1,4 @@
 import React from "react";
-import { RiSubtractFill, RiAddFill } from "react-icons/ri";
 import { GrFormSubtract, GrFormAdd } from "react-icons/gr";
 import { Tooltip } from "antd";
 import { useTranslation } from "react-i18next";

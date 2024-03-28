@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { SectionProducts } from "@/components";
 import { useWishesStore } from "@/store";
 import { Title } from "@/widgets";

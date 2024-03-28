@@ -4,7 +4,6 @@ import { useTranslation } from "react-i18next";
 import { CircularProgress } from "@mui/material";
 import { useSignOutMutation } from "@/services";
 import { useAuthPersistStore } from "@/store";
-import { User } from "@/assets";
 import { TLoginMe } from "@/models";
 import { FaRegUserCircle } from "react-icons/fa";
 import "./profileUser.scss";

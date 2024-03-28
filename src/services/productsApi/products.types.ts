@@ -1,4 +1,4 @@
-import { TPagination, TProductDetailsData, TReviewData } from '@/models';
+import { TProductDetailsData } from '@/models';
 
 export type TProductDetails = {
   data: TProductDetailsData;
