@@ -1,19 +1,21 @@
 import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { CartCard, Title } from "@/widgets";
-import { useAuthPersistStore, useCartStore } from "@/store";
-import { priceFormatter, nameTranslate } from "@/hooks";
 import { useNavigate } from "react-router-dom";
-import { useCreateOrdersMutation } from "@/services";
 import { CircularProgress } from "@mui/material";
+import { useCreateOrdersMutation } from "@/services";
+import { priceFormatter, nameTranslate, useOpen } from "@/hooks";
+import { useAuthPersistStore, useCartStore } from "@/store";
 import { Click } from "@/assets";
-import "./sectionCart.scss";
+import { CartCard, Title } from "@/widgets";
 import { message } from "antd";
+import { ModalPayment } from "@/components/Modal";
+import "./sectionCart.scss";
 
 const SectionCart: React.FC = () => {
     const { t } = useTranslation();
-    const { mutate: createOrders, isSuccess, isPending } = useCreateOrdersMutation()
+    const { data: myOrders, mutate: createOrders, isSuccess, isPending } = useCreateOrdersMutation()
     const { cart, cleanCart } = useCartStore();
+    const { open, handleOpen } = useOpen(false)
     const { token } = useAuthPersistStore();
     const navigate = useNavigate();
 
@@ -46,9 +48,11 @@ const SectionCart: React.FC = () => {
 
     useEffect(() => {
         if (isSuccess) {
-            cleanCart()
             message.success("Благодарим за покупку!")
-            navigate("/profile/orders")
+            if (myOrders.data.Success) {
+                handleOpen()
+                cleanCart()
+            }
         }
     }, [isSuccess, createOrders])
     return (
@@ -99,6 +103,11 @@ const SectionCart: React.FC = () => {
                                 {isPending && <div className="loading"><CircularProgress className="loading-icon"/></div>}
                             </div>
                         </>}
+                        <ModalPayment 
+                            modal={open}
+                            handleOpen={handleOpen}
+                            url={myOrders?.data.url}
+                        />
                     </div>
                 </div>
             </div>

@@ -1,13 +1,13 @@
 import { useState } from "react";
 
 const useOpen = (value: boolean) => {
-    const [open, setModal] = useState(value)
+    const [open, setOpen] = useState(value)
 
     const handleOpen = () => {
-        setModal(prev => !prev)
+        setOpen(prev => !prev)
     }
 
-    return { open, handleOpen };
+    return { open, handleOpen, setOpen};
 };
 
 export default useOpen;

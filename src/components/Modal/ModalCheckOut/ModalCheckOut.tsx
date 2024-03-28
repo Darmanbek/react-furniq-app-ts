@@ -1,55 +1,30 @@
-import React, { useEffect } from "react";
-import { message, Modal } from "antd";
+import React from "react";
+import { Modal } from "antd";
 import { useTranslation } from "react-i18next";
 import { Click } from "@/assets";
 import { nameTranslate, priceFormatter } from "@/hooks";
 import { TCartProduct } from "@/models";
-import "./modalCheckOut.scss";
-import { useCreateOrdersMutation } from "@/services";
 import { CircularProgress } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import "./modalCheckOut.scss";
 
 interface ModalCheckOutProps {
     modal: boolean;
-    defaultCount: () => void;
-    product: TCartProduct;
     handleOpen: () => void;
+    product: TCartProduct;
+    buyClick: () => void;
+    isLoading: boolean
 }
 
 const ModalCheckOut: React.FC<ModalCheckOutProps> = ({
     modal,
     handleOpen,
-    defaultCount,
+    isLoading,
     product,
+    buyClick
 }) => {
-    const {
-        mutate: createOrder,
-        isPending,
-        isSuccess,
-    } = useCreateOrdersMutation();
     const { t } = useTranslation();
-    const navigate = useNavigate();
+    
 
-    const buyClick = () => {
-        createOrder({
-            payment_type_id: 1,
-            products: [
-                {
-                    product_id: product.id,
-                    quantity: product.count,
-                },
-            ],
-        });
-    };
-
-    useEffect(() => {
-        if (isSuccess) {
-            handleOpen();
-            defaultCount();
-            navigate("/profile/orders");
-            message.success("Благодарим за покупку!");
-        }
-    }, [createOrder, isSuccess]);
     return (
         <Modal
             centered
@@ -89,9 +64,9 @@ const ModalCheckOut: React.FC<ModalCheckOutProps> = ({
                 <button
                     className="order-button"
                     onClick={buyClick}
-                    disabled={isPending}
+                    disabled={isLoading}
                 >
-                    {isPending ? <CircularProgress size={20} /> : t("checkout")}
+                    {isLoading ? <CircularProgress size={20} /> : t("checkout")}
                 </button>
             </div>
         </Modal>

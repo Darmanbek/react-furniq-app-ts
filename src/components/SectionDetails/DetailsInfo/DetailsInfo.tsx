@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { ButtonCount, ProductLike, ProductView } from "@/widgets";
 import { TCartProduct, TProductDetailsData } from "@/models";
 import { nameTranslate, priceFormatter, useCount, useOpen } from "@/hooks";
-import { useCartStore } from "@/store";
+import { useAuthPersistStore, useCartStore } from "@/store";
 import { message } from "antd";
+import { ModalCheckOut, ModalPayment } from "@/components/Modal";
+import { useCreateOrdersMutation } from "@/services";
+import { useNavigate } from "react-router-dom";
 import "./detailsInfo.scss";
-import { ModalCheckOut } from "@/components/Modal";
 
 interface DetailsInfoProps {
     detailsData: TProductDetailsData;
@@ -16,7 +18,17 @@ const DetailsInfo: React.FC<DetailsInfoProps> = ({ detailsData }) => {
     const { t } = useTranslation();
     const { setCart, updateCart, findCart } = useCartStore();
     const { open: modal, handleOpen } = useOpen(false);
-    const { count, decrement, increment, setCount } = useCount(1, detailsData.quantity);
+    const { open: chekout, handleOpen: handleCheckout } = useOpen(false);
+
+    const {
+        data: myOrder,
+        mutate: createOrder,
+        isPending: isCreateOrder,
+        isSuccess,
+    } = useCreateOrdersMutation();
+    const { count, decrement, increment, setCount } = useCount(detailsData.quantity !== 0 ? 1 : 0, detailsData.quantity);
+    const { token } = useAuthPersistStore()
+    const navigate = useNavigate();
 
     const setDataCart = () => {
         const findDataCart = findCart(detailsData.id)
@@ -35,15 +47,37 @@ const DetailsInfo: React.FC<DetailsInfoProps> = ({ detailsData }) => {
             message.success("Добавлен в корзину!");
         }
     };
-    
-    const defaultCount = () => {
-        setCount(1)
-    }
+
+    const buyClick = () => {
+        if (!token) {
+            navigate("/register")
+            return
+        }
+        createOrder({
+            payment_type_id: 1,
+            products: [
+                {
+                    product_id: detailsData.id,
+                    quantity: count,
+                },
+            ],
+        });
+    };
 
     const quantityStatus = detailsData.quantity > 10 ? "more" : "less";
     const quantityCount =
         detailsData.quantity > 10 ? "quantityMore" : "quantityLess";
 
+    useEffect(() => {
+        if (isSuccess) {
+            handleOpen();
+            setCount(1);
+            message.success("Благодарим за покупку!");
+            if (myOrder.data.Success) {
+                handleCheckout();
+            }
+        }
+    }, [createOrder, isSuccess]);
     return (
         <div className="details-info">
             <div className="info-top">
@@ -111,18 +145,24 @@ const DetailsInfo: React.FC<DetailsInfoProps> = ({ detailsData }) => {
             </div>
 
             <div className="info-add-cart">
-                <button className="fill" onClick={setDataCart}>
+                <button className="fill" onClick={setDataCart} disabled={detailsData.quantity === 0}>
                     {t("addToCart")}
                 </button>
-                <button className="stroke" onClick={handleOpen}>{t("buy")}</button>
+                <button className="stroke" onClick={handleOpen} disabled={detailsData.quantity === 0}>{t("buy")}</button>
                 <ModalCheckOut 
                     modal={modal}
                     handleOpen={handleOpen}
-                    defaultCount={defaultCount}
+                    buyClick={buyClick}
                     product={{
                         ...detailsData,
                         count
                     }}
+                    isLoading={isCreateOrder}
+                />
+                <ModalPayment 
+                modal={chekout}
+                handleOpen={handleCheckout}
+                url={myOrder?.data.url}
                 />
             </div>
         </div>

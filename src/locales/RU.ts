@@ -63,7 +63,7 @@ export const RU = {
         myOrders: "Мои заказы",
         checkout: "Оформить заказ",
         checkout2: "Оформление заказа",
-        buyCheckout: "Оплатить",
+        buyCheckout: "Оплатить сейчас",
         yourOrder: "Ваш заказ",
         totalPrice: "Итого:",
         products: "Товары:",

@@ -63,7 +63,7 @@ export const QR = {
         myOrders: "Менинг буйыртпаларим",
         checkout: "Дизимнен оширилиш",
         checkout2: "Дизимнен оширилиу",
-        buyCheckout: "Толеу",
+        buyCheckout: "Хазир толеу",
         yourOrder: "Сиздинг буйртпангиз",
         totalPrice: "Жами:",
         products: "Онимлер:",

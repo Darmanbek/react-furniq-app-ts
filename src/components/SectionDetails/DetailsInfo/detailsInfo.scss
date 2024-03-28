@@ -304,6 +304,17 @@
             background-color: var(--clr-orange);
             border: 2px solid var(--clr-orange);
             color: var(--clr-white);
+
+            &:active
+            {
+                filter: brightness(1.2);
+            }
+
+            &:disabled
+            {
+                cursor: no-drop;
+                opacity: 0.5;
+            }
         }
 
         .stroke
@@ -311,6 +322,17 @@
             color: var(--clr-orange);
             background-color: var(--clr-white);
             border: 2px solid var(--clr-orange);
+
+            &:active
+            {
+                filter: brightness(1.2);
+            }
+
+            &:disabled
+            {
+                cursor: no-drop;
+                opacity: 0.5;
+            }
         }
     }
 }

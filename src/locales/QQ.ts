@@ -63,7 +63,7 @@ export const QQ = {
         myOrders: "Menin buyirtpalarim",
         checkout: "Dizimnen oshirilish",
         checkout2: "Dizimnen oshiriliw",
-        buyCheckout: "Tolew",
+        buyCheckout: "Hazir Tolew",
         yourOrder: "Sizdin buyirtpaniz",
         totalPrice: "Jami:",
         products: "Onimler:",

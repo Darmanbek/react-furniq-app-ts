@@ -7,6 +7,4 @@ export { default as FurniqLogo2 } from "./img/logofurniq.png"
 
 export { default as BgMain } from "./bg/bg-main.jpg"
 
-export { default as User } from "./img/user.png"
-
 export { default as Click } from "./img/click.png"

@@ -46,7 +46,7 @@ const OrderCard: React.FC<OrderCardProps> = ({ order }) => {
                 </div>
                 <div className="order-block">
                     <span>{t("paymentUrl")}:</span>
-                    <span><a href={order.payment_url} target="_blank">{t("url")}</a></span>
+                    <span><a href={order.payment_url} target="_blank">{t("buyCheckout")}</a></span>
                 </div>
             </div>
             <div className="order-products">

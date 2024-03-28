@@ -51,7 +51,13 @@
 
                 a
                 {
-                    color: var(--clr-orange);
+                    background-color: var(--clr-orange);
+                    border-radius: 10px;
+                    max-width: 200px;
+                    padding: 5px 0;
+                    width: 100%;
+                    text-align: center;
+                    color: var(--clr-white);
 
                     &:hover
                     {
