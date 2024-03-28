@@ -7,10 +7,11 @@ import { TCartProduct } from "@/models";
 import "./modalCheckOut.scss";
 import { useCreateOrdersMutation } from "@/services";
 import { CircularProgress } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 interface ModalCheckOutProps {
     modal: boolean;
-    defaultCount: () => void
+    defaultCount: () => void;
     product: TCartProduct;
     handleOpen: () => void;
 }
@@ -27,6 +28,7 @@ const ModalCheckOut: React.FC<ModalCheckOutProps> = ({
         isSuccess,
     } = useCreateOrdersMutation();
     const { t } = useTranslation();
+    const navigate = useNavigate();
 
     const buyClick = () => {
         createOrder({
@@ -44,6 +46,7 @@ const ModalCheckOut: React.FC<ModalCheckOutProps> = ({
         if (isSuccess) {
             handleOpen();
             defaultCount();
+            navigate("/profile/orders");
             message.success("Благодарим за покупку!");
         }
     }, [createOrder, isSuccess]);
@@ -88,7 +91,7 @@ const ModalCheckOut: React.FC<ModalCheckOutProps> = ({
                     onClick={buyClick}
                     disabled={isPending}
                 >
-                    {isPending ? <CircularProgress  size={20}/> : t("checkout")}
+                    {isPending ? <CircularProgress size={20} /> : t("checkout")}
                 </button>
             </div>
         </Modal>

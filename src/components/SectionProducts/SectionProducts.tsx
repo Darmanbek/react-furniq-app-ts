@@ -10,9 +10,11 @@ interface SectionProductsProps {
     products?: TProduct[];
     isPending?: boolean
     children: React.ReactNode
+    isNotMore?: boolean
+    link?: string
 }
 
-const SectionProducts: React.FC<SectionProductsProps> = ({ products, isPending, children }) => {
+const SectionProducts: React.FC<SectionProductsProps> = ({ products, isPending, children, isNotMore, link }) => {
     const { t } = useTranslation();
     
     return (
@@ -36,15 +38,15 @@ const SectionProducts: React.FC<SectionProductsProps> = ({ products, isPending, 
                         ))}
                     </div>
                     <div className="products__bottom">
-                        {isPending && 
+                        { !isNotMore && isPending && 
                         <Skeleton.Button 
                         size="large"
                         className="skeleton-more"
                         active
                         block
                         />}
-                       {products && products.length > 0 &&  <Link
-                            to="/"
+                       {!isNotMore && products && products.length > 0 &&  <Link
+                            to={link ? `/products/${link}` : "/"}
                             className="products-more"
                         >
                             {t("showMore")}

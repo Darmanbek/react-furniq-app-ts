@@ -58,7 +58,7 @@ const HeaderTop: React.FC = () => {
                     </li>
                     {token &&
                     <li>
-                        <Link to="/">{t("myOrders")}</Link>
+                        <Link to="/profile/orders">{t("myOrders")}</Link>
                     </li>
                     }
                     <li>

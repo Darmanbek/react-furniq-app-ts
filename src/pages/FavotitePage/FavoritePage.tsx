@@ -18,7 +18,7 @@ const FavoritePage: React.FC = () => {
 
     return (
         <>
-            <SectionProducts products={wishes}>
+            <SectionProducts products={wishes} isNotMore>
                 <Title title={title} subTitle={subTitle}/>
             </SectionProducts>
         </>

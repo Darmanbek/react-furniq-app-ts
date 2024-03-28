@@ -20,7 +20,7 @@ const SectionProfile: React.FC<SectionProfileProps> = ({ link }) => {
 
     const subTitle = {
         name: isPending? "loading" : "profile",
-        link: "/profile",
+        link: "/profile/orders",
     };
 
     const subSubTitle = {

@@ -11,7 +11,7 @@ const ProfilePage: React.FC = () => {
 
     useEffect(() => {
         if (!profileId) {
-            navigate("/profile/orders")
+            navigate("/profile/orders", { replace: true })
         }
     }, [profileId])
     return (

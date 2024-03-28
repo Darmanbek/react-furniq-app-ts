@@ -14,30 +14,30 @@ const HomePage: React.FC = () => {
 
     const titlePopular = {
         name: isPopular ? "loading" : "popular",
-        link: "/popular"
+        link: "/products/popular"
     }
 
-    const titleUraza = {
+    const titleLatest = {
         name: isLatest ? "loading" : "latest",
-        link: "/"
+        link: "/products/latest"
     }
 
-    const titleInstallments = {
+    const titleAllProducts = {
         name: isProducts ? "loading" : "allProducts",
-        link: "/"
+        link: "/products/all"
     }
 
     return (
         <>
             <SectionBanner />
-            <SectionProducts products={popular?.data} isPending={isPopular}>
+            <SectionProducts products={popular?.data} isPending={isPopular} link="popular">
                 <Title title={titlePopular}/>
             </SectionProducts>
-            <SectionProducts products={latest?.data} isPending={isLatest}>
-                <Title title={titleUraza}/>
+            <SectionProducts products={latest?.data} isPending={isLatest} link="latest">
+                <Title title={titleLatest}/>
             </SectionProducts>
-            <SectionProducts products={products?.data} isPending={isProducts}>
-                <Title title={titleInstallments}/>
+            <SectionProducts products={products?.data} isPending={isProducts} link="all">
+                <Title title={titleAllProducts}/>
             </SectionProducts>
         </>
     );

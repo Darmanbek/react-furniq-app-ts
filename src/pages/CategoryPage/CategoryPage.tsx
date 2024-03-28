@@ -32,7 +32,7 @@ const CategoryPage: React.FC = () => {
 
     return (
         <>
-        <SectionProducts products={categoryProducts?.data} isPending={isPending}>
+        <SectionProducts products={categoryProducts?.data} isPending={isPending} isNotMore>
             <Title title={title} subTitle={subTitle}/>
         </SectionProducts>
         </>

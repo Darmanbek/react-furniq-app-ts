@@ -19,6 +19,8 @@ export const QR = {
         sellOnFurniq: "Фурникта сатын",
         SignInSellers: "Сатыушылар болимине кириу",
         popular: "Трендегилер",
+        latest: "Ен сонгылар",
+        allProducts: "Барлык онимлер",
         review: "Пикир",
         reviews: "Пикирлер",
         allReviews: "Хамме пикирлер",
@@ -96,6 +98,7 @@ export const QR = {
         orderPrice: "Буйыртпа мугдары ",
         paymentType: "Толеу усылы",
         paymentUrl: "Толеу жери",
-        url: "Силтеме"
+        url: "Силтеме",
+        search: "Излеу"
     },
 };

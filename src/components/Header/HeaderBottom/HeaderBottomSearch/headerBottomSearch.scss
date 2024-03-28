@@ -1,5 +1,6 @@
 .header__bottom-search
 {
+    position: relative;
     overflow: hidden;
     display: flex;
     border: 2px solid var(--clr-light-blue);
@@ -98,5 +99,20 @@
             line-height: 32px;
             color: var(--clr-dark-state-gray);
         }
+    }
+
+    .search-bottom-list
+    {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        width: 100%;
+        z-index: 60;
+        padding: 20px;
+        top: 110%;
+        border: 2px solid var(--clr-light-blue);
+        border-radius: 10px;
+        background-color: var(--clr-white);
     }
 }

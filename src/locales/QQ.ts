@@ -19,6 +19,8 @@ export const QQ = {
         sellOnFurniq: "Furniqta sating",
         SignInSellers: "Satiwshilar bolimine kiriw",
         popular: "Trendegiler",
+        latest: "En songilar",
+        allProducts: "Barliq onimler",
         review: "pikir",
         reviews: "Pikirler",
         allReviews: "Hamme pikirler",
@@ -96,6 +98,7 @@ export const QQ = {
         orderPrice: "Buyirtpa mugdari",
         paymentType: "Tolew usili",
         paymentUrl: "Tolew jeri",
-        url: "Silteme"
+        url: "Silteme",
+        search: "Izlew"
     },
 };

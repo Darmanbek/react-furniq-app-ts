@@ -7,14 +7,14 @@ const CartPage: React.FC = () => {
     const { data: products, isPending } = useGetProductsQuery();
 
     const title = {
-        name: "similar",
-        link: "/"
+        name: "allProducts",
+        link: "/products/all"
     }
     
     return (
         <>
             <SectionCart />
-            <SectionProducts products={products?.data} isPending={isPending}>
+            <SectionProducts products={products?.data} isPending={isPending} link="all">
                 <Title title={title}/>
             </SectionProducts>
         </>

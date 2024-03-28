@@ -18,8 +18,8 @@ const DetailsPage: React.FC = () => {
     const { data: products, isPending: productsPending } = useGetProductsQuery()
 
     const title = {
-        name: "similar",
-        link: "/"
+        name: "allProducts",
+        link: "/products/all"
     }
 
     return (
@@ -29,7 +29,7 @@ const DetailsPage: React.FC = () => {
                 detailsImages={detailsImages?.data}
                 isPending={isPending}
             />
-            <SectionProducts products={products?.data} isPending={productsPending}>
+            <SectionProducts products={products?.data} isPending={productsPending} link="all">
                 <Title title={title}/>
             </SectionProducts>
         </>

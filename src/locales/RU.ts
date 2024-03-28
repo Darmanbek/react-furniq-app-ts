@@ -98,6 +98,7 @@ export const RU = {
         orderPrice: "Сумма заказа",
         paymentType: "Способ оплаты",
         paymentUrl: "Ссылка оплаты",
-        url: "Ссылка"
+        url: "Ссылка",
+        search: "Поиск"
     },
 };

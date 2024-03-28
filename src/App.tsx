@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { Header, Footer, Aside } from "@/components";
 import {
     CartPage,
@@ -8,11 +8,14 @@ import {
     FavoritePage,
     HomePage,
     NotFoundPage,
+    SearchPage,
+    ProductsPage,
     ProfilePage,
     SignInPage,
     SignOnPage,
 } from "@/pages";
 import "@/styles/app.css";
+import RequireAuth from "./hoc/RequireAuth";
 
 const App: React.FC = () => {
     return (
@@ -21,13 +24,19 @@ const App: React.FC = () => {
             <main>
                 <Routes>
                     <Route path="/" element={<HomePage />} />
-                    <Route path="/*" element={<NotFoundPage />} />
                     <Route path="/login" element={<SignInPage />} />
                     <Route path="/register" element={<SignOnPage />} />
-                    <Route path="/profile" element={<ProfilePage />} />
+                    <Route
+                        path="/profile"
+                        element={<Navigate to="/profile/orders" replace />}
+                    />
                     <Route
                         path="/profile/:profileId"
-                        element={<ProfilePage />}
+                        element={
+                            <RequireAuth>
+                                <ProfilePage />
+                            </RequireAuth>
+                        }
                     />
                     <Route path="/wishes" element={<FavoritePage />} />
                     <Route path="/cart" element={<CartPage />} />
@@ -35,11 +44,17 @@ const App: React.FC = () => {
                         path="/details/:productId"
                         element={<DetailsPage />}
                     />
-                    
+
                     <Route
                         path="/category/:categoryId"
                         element={<CategoryPage />}
                     />
+
+                    <Route path="/search" element={<SearchPage />} />
+
+                    <Route path="/products/*" element={<ProductsPage />} />
+
+                    <Route path="/*" element={<NotFoundPage />} />
                 </Routes>
             </main>
             <Footer />
