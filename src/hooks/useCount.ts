@@ -16,7 +16,7 @@ const useCount = (countNumber: number, quantity: number) => {
         }
     }
 
-    return { count, increment, decrement}
+    return { count, setCount, increment, decrement}
 }
 
 export default useCount;

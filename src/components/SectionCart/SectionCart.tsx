@@ -12,7 +12,7 @@ import { message } from "antd";
 
 const SectionCart: React.FC = () => {
     const { t } = useTranslation();
-    const { data: myOrders, mutate: createOrders, isSuccess, isPending } = useCreateOrdersMutation()
+    const { mutate: createOrders, isSuccess, isPending } = useCreateOrdersMutation()
     const { cart, cleanCart } = useCartStore();
     const { token } = useAuthPersistStore();
     const navigate = useNavigate();

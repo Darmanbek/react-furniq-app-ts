@@ -1,0 +1,96 @@
+.modal-checkout
+{
+    
+
+    .modal-checkout-inner
+    {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 15px;
+        color: var(--clr-dark-state-gray);
+
+        span
+        {
+            color: var(--clr-dark-state-gray);
+        }
+
+        .order-count
+        {
+            font-size: 16px;
+            line-height: 24px;
+            display: flex;
+            gap: 5px;
+        }
+
+        .order-total
+        {
+            display: flex;
+            justify-content: space-between;
+            color: var(--clr-dark-state-gray);
+            font-size: 16px;
+            line-height: 21px;
+        }
+
+        .order-list
+        {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+
+            li
+            {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 12px;
+                background-color: var(--clr-gray-2-5);
+                border-radius: 10px;
+                overflow: hidden;
+                
+                span
+                {
+                    text-wrap: nowrap;
+                    font-size: 12px;
+                    line-height: 16px;
+                    color: var(--clr-dark-state-gray);
+                }
+            }
+        }
+
+        .order-checkout
+        {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            span
+            {
+                font-size: 16px;
+                line-height: 24px;
+            }
+
+            img
+            {
+                max-width: 70px;
+            }
+        }
+
+        .order-button
+        {
+            padding: 8px 0;
+            background-color: var(--clr-orange);
+            color: var(--clr-white);
+            font-size: 16px;
+            text-align: center;
+            line-height: 21px;
+            border-radius: 10px;
+
+            span
+            {
+                color: var(--clr-white);
+            }
+        }
+    }
+}

@@ -2,10 +2,11 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { ButtonCount, ProductLike, ProductView } from "@/widgets";
 import { TCartProduct, TProductDetailsData } from "@/models";
-import { nameTranslate, priceFormatter, useCount } from "@/hooks";
+import { nameTranslate, priceFormatter, useCount, useOpen } from "@/hooks";
 import { useCartStore } from "@/store";
 import { message } from "antd";
 import "./detailsInfo.scss";
+import { ModalCheckOut } from "@/components/Modal";
 
 interface DetailsInfoProps {
     detailsData: TProductDetailsData;
@@ -14,7 +15,8 @@ interface DetailsInfoProps {
 const DetailsInfo: React.FC<DetailsInfoProps> = ({ detailsData }) => {
     const { t } = useTranslation();
     const { setCart, updateCart, findCart } = useCartStore();
-    const { count, decrement, increment } = useCount(1, detailsData.quantity);
+    const { open: modal, handleOpen } = useOpen(false);
+    const { count, decrement, increment, setCount } = useCount(1, detailsData.quantity);
 
     const setDataCart = () => {
         const findDataCart = findCart(detailsData.id)
@@ -33,9 +35,9 @@ const DetailsInfo: React.FC<DetailsInfoProps> = ({ detailsData }) => {
             message.success("Добавлен в корзину!");
         }
     };
-
-    const buyDataCart = () => {
-
+    
+    const defaultCount = () => {
+        setCount(1)
     }
 
     const quantityStatus = detailsData.quantity > 10 ? "more" : "less";
@@ -112,7 +114,16 @@ const DetailsInfo: React.FC<DetailsInfoProps> = ({ detailsData }) => {
                 <button className="fill" onClick={setDataCart}>
                     {t("addToCart")}
                 </button>
-                <button className="stroke">{t("buy")}</button>
+                <button className="stroke" onClick={handleOpen}>{t("buy")}</button>
+                <ModalCheckOut 
+                    modal={modal}
+                    handleOpen={handleOpen}
+                    defaultCount={defaultCount}
+                    product={{
+                        ...detailsData,
+                        count
+                    }}
+                />
             </div>
         </div>
     );
