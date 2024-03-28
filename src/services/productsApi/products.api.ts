@@ -40,7 +40,7 @@ const useGetProductImageQuery = (id: number) =>
 const useGetProductReviewQuery = (id: number) =>
     useQuery({
         queryFn: () => axiosGetProductReviews(id),
-        queryKey: ["image", id],
+        queryKey: ["review", id],
     });
 
 export {

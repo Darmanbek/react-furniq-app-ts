@@ -48,6 +48,16 @@
             {
                 font-size: 16px;
                 line-height: 24px;
+
+                a
+                {
+                    color: var(--clr-orange);
+
+                    &:hover
+                    {
+                        filter: brightness(1.2);
+                    }
+                }
                 
                 @media screen and (max-width: 768px) {
                     font-size: 14px;
@@ -74,6 +84,12 @@
                     background-color: rgba(0, 255, 0, 0.5);
                     padding: 5px 15px;
                     text-align: center;
+                    text-transform: capitalize;
+
+                    &.wait
+                    {
+                        background-color: rgba(255, 255, 0, 0.5);
+                    }
                 }
             }
         }

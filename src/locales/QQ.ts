@@ -60,6 +60,8 @@ export const QQ = {
         material: "Material",
         myOrders: "Menin buyirtpalarim",
         checkout: "Dizimnen oshirilish",
+        checkout2: "Dizimnen oshiriliw",
+        buyCheckout: "Tolew",
         yourOrder: "Sizdin buyirtpaniz",
         totalPrice: "Jami:",
         products: "Onimler:",
@@ -93,5 +95,7 @@ export const QQ = {
         orderUpdate: "Jetkiziw sanesi",
         orderPrice: "Buyirtpa mugdari",
         paymentType: "Tolew usili",
+        paymentUrl: "Tolew jeri",
+        url: "Silteme"
     },
 };

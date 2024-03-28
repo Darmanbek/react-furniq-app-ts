@@ -24,26 +24,35 @@ const OrderCardProduct: React.FC<orderCardProductProps> = ({ product }) => {
     const { data: reviews } = useGetReviewsQuery(product.id);
     const { mutate: createReview } = useCreateReviewMutation(product.id);
 
-    const [myRating, setMyRating] = useState<number | undefined>()
+    const [myReview, setMyReview] = useState<{
+        id: number | undefined,
+        rating: number
+    }>()
 
     const sendReview = (rating: number, body: string) => {
         createReview({
             rating,
             body,
         });
-        setMyRating(rating)
+        setMyReview({
+            id: myReview?.id,
+            rating
+        })
     };
 
     useEffect(() => {
-        const myReview= reviews?.data.find(
-            (item) => item.user.name === meUser?.data.name
+        const findReview= reviews?.data.find(
+            (item) => item.user.id === meUser?.data.id
         );
-        if (myReview) {
-            setMyRating(myReview.rating)
+        if (findReview) {
+            setMyReview({
+                id: findReview.id,
+                rating: findReview.rating,
+            })
         }
     }, [reviews, meUser, createReview])
     return (
-        <div className="order-card-product">
+        <div className="order-card-product" id={`${product.id}`}>
             <div className="product-img">
                 <ProductImage image={product.image} />
             </div>
@@ -77,10 +86,10 @@ const OrderCardProduct: React.FC<orderCardProductProps> = ({ product }) => {
                         </span>
                     </span>
                 </div>
-                {myRating ? (
+                {myReview ? (
                     <button className="update-order">
                         <IoMdStar className="order-icon" />
-                        {myRating}
+                        {myReview.rating}
                         {/* <CiEdit className="order-icon" /> */}
                     </button>
                 ) : (

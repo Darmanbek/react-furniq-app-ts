@@ -1,10 +1,9 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { ButtonCount, ProductLike, ProductView } from "@/widgets";
-import { NoImage } from "@/assets";
 import { TCartProduct, TProductDetailsData } from "@/models";
 import { nameTranslate, priceFormatter, useCount } from "@/hooks";
-import { useCartStore, useProductsStore } from "@/store";
+import { useCartStore } from "@/store";
 import { message } from "antd";
 import "./detailsInfo.scss";
 
@@ -14,36 +13,30 @@ interface DetailsInfoProps {
 
 const DetailsInfo: React.FC<DetailsInfoProps> = ({ detailsData }) => {
     const { t } = useTranslation();
-    const { setCart, removeCart, findCart } = useCartStore();
-    const { getProductById } = useProductsStore();
+    const { setCart, updateCart, findCart } = useCartStore();
     const { count, decrement, increment } = useCount(1, detailsData.quantity);
 
     const setDataCart = () => {
-        if (findCart(detailsData.id)) {
-            removeCart(detailsData.id);
-            message.error("Удален из корзины");
+        const findDataCart = findCart(detailsData.id)
+        if (findDataCart) {
+            updateCart({
+                ...detailsData,
+                count: findDataCart.count + count,
+            });
+            message.success("Обновлен в корзине!");
         } else {
-            const newData = getProductById(detailsData.id);
-            const quantity = detailsData.quantity;
-            const seller = detailsData.seller;
-            const color = detailsData.color;
-            const material = detailsData.material;
-            if (newData) {
-                const cartProduct: TCartProduct = {
-                    ...newData,
-                    seller,
-                    color,
-                    material,
-                    count,
-                    quantity,
-                };
-                setCart(cartProduct);
-                message.success("Успешно");
-            } else {
-                message.error("Ошибка");
-            }
+            const cartProduct: TCartProduct = {
+                ...detailsData,
+                count,
+            };
+            setCart(cartProduct);
+            message.success("Добавлен в корзину!");
         }
     };
+
+    const buyDataCart = () => {
+
+    }
 
     const quantityStatus = detailsData.quantity > 10 ? "more" : "less";
     const quantityCount =

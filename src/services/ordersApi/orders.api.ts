@@ -8,8 +8,6 @@ const useGetOrdersQuery = () =>
     useQuery({
         queryFn: () => axiosGetOrders(),
         queryKey: ["orders"],
-        refetchOnMount: true,
-        refetchOnWindowFocus: true,
     });
 
 const useCreateOrdersMutation = () => {

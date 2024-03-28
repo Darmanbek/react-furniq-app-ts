@@ -1,5 +1,5 @@
 import api from "@/api";
-import { TOrder } from "./orders.types";
+import { TOrder, TOrderStatus } from "./orders.types";
 import { TCreateOrders } from "@/models";
 
 
@@ -10,7 +10,7 @@ const axiosGetOrders = async (): Promise<TOrder> => {
 
 const axiosPostOrder = async (
     value: TCreateOrders
-): Promise<void> => {
+): Promise<TOrderStatus> => {
     const response = await api.post("orders", value);
     return response.data;
 };

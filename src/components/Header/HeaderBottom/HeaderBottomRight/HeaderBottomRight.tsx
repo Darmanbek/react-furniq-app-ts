@@ -33,7 +33,8 @@ const HeaderBottomRight: React.FC = () => {
             >
                 <FaUser className="bottom-right__icon fill" />
                 <FaRegUser className="bottom-right__icon stroke" />
-                <span></span>
+                {!token &&
+                <span></span>}
             </NavLink>
         </div>
     );

@@ -20,7 +20,7 @@ const OrderCard: React.FC<OrderCardProps> = ({ order }) => {
             <div className="order-card__info">
                 <div className="order-block status">
                     <span>{t("status")}:</span>
-                    <span>{t(nameTranslate(order.status.name))}</span>
+                    <span className={order.status.id === 1 ? "wait" : "done"}>{t(nameTranslate(order.status.name))}</span>
                 </div>
                 <div className="order-block">
                     <span>{t("orderDate")}:</span>
@@ -43,6 +43,10 @@ const OrderCard: React.FC<OrderCardProps> = ({ order }) => {
                 <div className="order-block">
                     <span>{t("paymentType")}:</span>
                     <span>{t(nameTranslate(order.payment_type.name))}</span>
+                </div>
+                <div className="order-block">
+                    <span>{t("paymentUrl")}:</span>
+                    <span><a href={order.payment_url} target="_blank">{t("url")}</a></span>
                 </div>
             </div>
             <div className="order-products">

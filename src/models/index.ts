@@ -69,24 +69,23 @@ export type TProductDetailsData = {
     created_at: string;
     updated_at: string;
 };
-  
 
 export type TLoginMe = {
+    id: number;
     name: string;
     email: string;
     phone: string;
     role: string;
-}
+};
 
 export interface TUser {
-    id: number
-    name: string
+    id: number;
+    name: string;
 }
 
 export type TPagination = {
-    total: number
-}
-
+    total: number;
+};
 
 export type TReviewData = {
     id: number;
@@ -97,19 +96,25 @@ export type TReviewData = {
     created_at: string;
     updated_at: string;
     seller: TSeller;
-    seller_answer: any
-    answered_at: string
-}
+    seller_answer: any;
+    answered_at: string;
+};
 
 export type TOrderProduct = {
-    product_id: number
-    quantity: number
-}
+    product_id: number;
+    quantity: number;
+};
 
 export type TCreateOrders = {
     payment_type_id: number;
     products: TOrderProduct[];
-}
+};
+
+export type TOrdersStatusData = {
+    Success: boolean;
+    message: string;
+    url: string;
+};
 
 export type TProductOrder = {
     id: number;
@@ -119,7 +124,7 @@ export type TProductOrder = {
     material: string;
     quantity: number;
     image: null | TImages;
-}
+};
 
 export type TOrderData = {
     id: number;
@@ -127,6 +132,7 @@ export type TOrderData = {
     status: TCategory;
     sum: number;
     products: TProductOrder[];
+    payment_url: string;
     created_at: string;
     updated_at: string;
-}
+};

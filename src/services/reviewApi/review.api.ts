@@ -41,4 +41,8 @@ const useUpdateReviewMutation = (id: number) => {
     });
 };
 
-export { useCreateReviewMutation, useGetReviewsQuery, useUpdateReviewMutation };
+export { 
+    useCreateReviewMutation, 
+    useGetReviewsQuery, 
+    useUpdateReviewMutation 
+};

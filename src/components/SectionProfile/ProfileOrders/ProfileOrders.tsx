@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { OrderCard } from "@/widgets";
 import { useGetOrdersQuery } from "@/services";
 import "./profileOrders.scss"
@@ -6,12 +6,8 @@ import { useTranslation } from "react-i18next";
 
 const ProfileOrders: React.FC = () => {
     const { t } = useTranslation()
-    const getOrders = useGetOrdersQuery()
-    const { data: orders, isPending } = getOrders
+    const { data: orders, isPending } = useGetOrdersQuery()
 
-    useEffect(() => {
-        getOrders.refetch()
-    }, [])
     return (
         <div className="profile-orders">
             <div className="orders-head">

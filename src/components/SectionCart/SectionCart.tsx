@@ -4,14 +4,15 @@ import { CartCard, Title } from "@/widgets";
 import { useAuthPersistStore, useCartStore } from "@/store";
 import { priceFormatter, nameTranslate } from "@/hooks";
 import { useNavigate } from "react-router-dom";
-import { Click } from "@/assets";
 import { useCreateOrdersMutation } from "@/services";
 import { CircularProgress } from "@mui/material";
+import { Click } from "@/assets";
 import "./sectionCart.scss";
+import { message } from "antd";
 
 const SectionCart: React.FC = () => {
     const { t } = useTranslation();
-    const { mutate: createOrders, isSuccess, isPending } = useCreateOrdersMutation()
+    const { data: myOrders, mutate: createOrders, isSuccess, isPending } = useCreateOrdersMutation()
     const { cart, cleanCart } = useCartStore();
     const { token } = useAuthPersistStore();
     const navigate = useNavigate();
@@ -31,7 +32,7 @@ const SectionCart: React.FC = () => {
             navigate("/register");
         } else {
             const orders = {
-                payment_type_id: 2,
+                payment_type_id: 1,
                 products: cart.map((product) => {
                     return {
                         product_id: product.id,
@@ -41,12 +42,13 @@ const SectionCart: React.FC = () => {
             }
             createOrders(orders)
         }
-        // navigate("https://www.google.com/")
     }
 
     useEffect(() => {
         if (isSuccess) {
             cleanCart()
+            message.success("Благодарим за покупку!")
+            navigate("/profile/orders")
         }
     }, [isSuccess, createOrders])
     return (

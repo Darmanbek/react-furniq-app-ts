@@ -60,6 +60,8 @@ export const QR = {
         material: "Материал",
         myOrders: "Менинг буйыртпаларим",
         checkout: "Дизимнен оширилиш",
+        checkout2: "Дизимнен оширилиу",
+        buyCheckout: "Толеу",
         yourOrder: "Сиздинг буйртпангиз",
         totalPrice: "Жами:",
         products: "Онимлер:",
@@ -93,5 +95,7 @@ export const QR = {
         orderUpdate: "Жеткизиу сaнеси",
         orderPrice: "Буйыртпа мугдары ",
         paymentType: "Толеу усылы",
+        paymentUrl: "Толеу жери",
+        url: "Силтеме"
     },
 };

@@ -62,6 +62,8 @@ export const RU = {
         material: "Материал",
         myOrders: "Мои заказы",
         checkout: "Оформить заказ",
+        checkout2: "Оформление заказа",
+        buyCheckout: "Оплатить",
         yourOrder: "Ваш заказ",
         totalPrice: "Итого:",
         products: "Товары:",
@@ -95,5 +97,7 @@ export const RU = {
         orderUpdate: "Дата доставки",
         orderPrice: "Сумма заказа",
         paymentType: "Способ оплаты",
+        paymentUrl: "Ссылка оплаты",
+        url: "Ссылка"
     },
 };

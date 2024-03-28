@@ -5,14 +5,14 @@ import ProfileUser from "./ProfileUser/ProfileUser";
 import { useGetMeQuery } from "@/services";
 import { Title } from "@/widgets";
 import "./sectionProfile.scss";
+import { Route, Routes } from "react-router-dom";
 
 interface SectionProfileProps {
     link: string;
 }
 
 const SectionProfile: React.FC<SectionProfileProps> = ({ link }) => {
-    const meUser = useGetMeQuery()
-    const { data, isPending } = meUser;
+    const { data, isPending } = useGetMeQuery();
  
     const title = {
         name: "home",
@@ -29,9 +29,6 @@ const SectionProfile: React.FC<SectionProfileProps> = ({ link }) => {
         link: `/profile/${link}`,
     };
 
-    useEffect(() => {
-        meUser.refetch()
-    }, [])
     return (
         <section className="section-profile">
             <div className="container">
@@ -45,6 +42,10 @@ const SectionProfile: React.FC<SectionProfileProps> = ({ link }) => {
                         <div className="profile-head">
                             <ProfileUser link={link} data={data?.data}/>
                         </div>
+                        {/* <Routes>
+                            <Route path="orders" element={} />
+                            <Route path="settings" />
+                        </Routes> */}
                         {link === "orders" && <ProfileOrders />}
                         {link === "settings" && <ProfileSettings data={data?.data} isPending={isPending}/>}
                         <div className="profile-foot">

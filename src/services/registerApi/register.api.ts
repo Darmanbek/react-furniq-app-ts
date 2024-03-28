@@ -12,7 +12,7 @@ const useSignOnMutation = () => {
             message.success('Успешно!');
         },
         onError: () => {
-            message.error('Ошибка!');
+            message.error('Неверный Номер!');
         }
     });
 };
